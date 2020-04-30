@@ -11,4 +11,11 @@
     <string name="product_name">Tên sản phẩm</string>
     <string name="product_description">Mô tả</string>
     <string name="product_guarantee">Thời gian bảo hành</string>
+    <string name="list_customer">DANH SÁCH KHÁCH HÀNG</string>
+    <string name="create_customer">TẠO MỚI KHÁCH HÀNG</string>
+    <string name="info_customer">THÔNG TIN KHÁCH HÀNG</string>
+    <string name="customer_id">Mã khách hàng</string>
+    <string name="customer_name">Tên khách hàng</string>
+    <string name="address">Địa chỉ</string>
+    <string name="phone_number">Số điện thoại</string>
 </resources>

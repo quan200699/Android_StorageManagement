@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".activity.customer.CustomerActivity"
+            android:label="@string/list_customer" />
+        <activity
             android:name=".activity.product.ProductDetailActivity"
             android:label="@string/info_product" />
         <activity
@@ -21,6 +24,7 @@
         <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
