@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">StorageManagement</string>
+    <string name="add">Thêm</string>
+    <string name="list_product">DANH SÁCH SẢN PHẨM</string>
 </resources>
