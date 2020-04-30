@@ -47,11 +47,12 @@ public class ProductDetailActivity extends AppCompatActivity {
     }
 
     private Product getProductInfoFromBundle(Bundle bundle) {
+        int id = bundle.getInt(ID);
         String productId = bundle.getString(PRODUCT_ID);
         String productName = bundle.getString(NAME);
         String productDescription = bundle.getString(DESCRIPTION);
-        String productGuarantee = bundle.getString(GUARANTEE);
-        return new Product(productId, productName, productDescription, Integer.parseInt(productGuarantee));
+        int productGuarantee = bundle.getInt(GUARANTEE);
+        return new Product(id, productId, productName, productDescription, productGuarantee);
     }
 
     private void init() {

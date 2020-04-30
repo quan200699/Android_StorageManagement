@@ -43,7 +43,7 @@ public class ProductActivity extends AppCompatActivity {
                 intent.putExtra(PRODUCT_ID, products.get(position).getProductId());
                 intent.putExtra(NAME, products.get(position).getName());
                 intent.putExtra(DESCRIPTION, products.get(position).getDescription());
-                intent.putExtra(GUARANTEE, products.get(position).getGuarantee() + "");
+                intent.putExtra(GUARANTEE, products.get(position).getGuarantee());
                 startActivity(intent);
             }
         });
