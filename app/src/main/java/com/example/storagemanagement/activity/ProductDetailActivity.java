@@ -1,8 +1,10 @@
 package com.example.storagemanagement.activity;
 
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -44,15 +46,44 @@ public class ProductDetailActivity extends AppCompatActivity {
                     Product newProduct = getProductInfoFromLayout();
                     newProduct.setId(productInfoFromBundle.getId());
                     boolean isUpdated = productDao.updateById(productInfoFromBundle.getId(), newProduct);
-                    showMessage(isUpdated);
+                    showMessage(isUpdated, MESSAGE_UPDATE_SUCCESS);
+                }
+            });
+            buttonDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showPopup(productInfoFromBundle.getId());
                 }
             });
         }
     }
 
-    private void showMessage(boolean isSuccess) {
+    private void showPopup(final int id) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(ProductDetailActivity.this);
+        final boolean isDeleted = productDao.removeById(id);
+        builder.setTitle("Xóa thông tin sản phẩm");
+        builder.setMessage("Bạn có chắc muốn xóa thông tin sản phẩm này?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                showMessage(isDeleted, MESSAGE_DELETE_SUCCESS);
+                Intent intent = new Intent(ProductDetailActivity.this, ProductActivity.class);
+                startActivity(intent);
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(getApplicationContext(), "Cancel", Toast.LENGTH_SHORT).show();
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    private void showMessage(boolean isSuccess, String message) {
         if (isSuccess) {
-            Toast.makeText(getApplicationContext(), MESSAGE_UPDATE_SUCCESS, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(getApplicationContext(), MESSAGE_FAIL, Toast.LENGTH_SHORT).show();
         }
