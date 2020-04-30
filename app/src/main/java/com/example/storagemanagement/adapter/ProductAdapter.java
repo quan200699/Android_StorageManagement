@@ -51,7 +51,7 @@ public class ProductAdapter extends BaseAdapter {
             textViewProductId.setText(product.getProductId());
             textViewProductName.setText(product.getName());
             textViewProductDescription.setText(product.getDescription());
-            textViewProductGuarantee.setText(product.getGuarantee());
+            textViewProductGuarantee.setText(product.getGuarantee() + "");
         }
         return convertView;
     }

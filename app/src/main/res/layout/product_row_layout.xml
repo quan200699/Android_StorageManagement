@@ -15,12 +15,13 @@
         android:layout_height="wrap_content" />
 
     <TextView
-        android:id="@+id/textViewDescription"
+        android:id="@+id/textViewGuarantee"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <TextView
-        android:id="@+id/textViewGuarantee"
+        android:id="@+id/textViewDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
 </LinearLayout>

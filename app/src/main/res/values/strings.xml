@@ -1,5 +1,11 @@
 <resources>
     <string name="app_name">StorageManagement</string>
+    <string name="app_title">QUẢN LÝ KHO</string>
     <string name="add">Thêm</string>
     <string name="list_product">DANH SÁCH SẢN PHẨM</string>
+    <string name="create_product">TẠO MỚI SẢN PHẨM</string>
+    <string name="product_id">Mã sản phẩm</string>
+    <string name="product_name">Tên sản phẩm</string>
+    <string name="product_description">Mô tả</string>
+    <string name="product_guarantee">Thời gian bảo hành</string>
 </resources>

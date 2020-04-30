@@ -2,11 +2,13 @@ package com.example.storagemanagement.dao.product;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.storagemanagement.helper.DBHelper;
 import com.example.storagemanagement.model.Product;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.storagemanagement.config.StaticVariable.*;
@@ -37,7 +39,21 @@ public class ProductDao implements IProductDao {
 
     @Override
     public List<Product> findAll() {
-        return null;
+        List<Product> products = new ArrayList<>();
+        SQLiteDatabase sqLiteDatabase = this.dbHelper.getReadableDatabase();
+        Cursor res = sqLiteDatabase.rawQuery(SELECT_ALL_PRODUCT, null);
+        res.moveToFirst();
+        while (!res.isAfterLast()) {
+            int id = res.getInt(res.getColumnIndex(ID));
+            String productId = res.getString(res.getColumnIndex(PRODUCT_ID));
+            String name = res.getString(res.getColumnIndex(NAME));
+            String description = res.getString(res.getColumnIndex(DESCRIPTION));
+            int guarantee = res.getInt(res.getColumnIndex(GUARANTEE));
+            products.add(new Product(id, productId, name, description, guarantee));
+            res.moveToNext();
+        }
+        res.close();
+        return products;
     }
 
     @Override
