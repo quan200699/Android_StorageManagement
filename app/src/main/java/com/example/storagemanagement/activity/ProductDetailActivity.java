@@ -35,11 +35,15 @@ public class ProductDetailActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             Product productInfoFromBundle = getProductInfoFromBundle(bundle);
-            editTextProductId.setText(productInfoFromBundle.getProductId());
-            editTextProductName.setText(productInfoFromBundle.getName());
-            editTextProductDescription.setText(productInfoFromBundle.getDescription());
-            editTextProductGuarantee.setText(productInfoFromBundle.getGuarantee() + "");
+            setEditTextDefaultValue(productInfoFromBundle);
         }
+    }
+
+    private void setEditTextDefaultValue(Product product) {
+        editTextProductId.setText(product.getProductId());
+        editTextProductName.setText(product.getName());
+        editTextProductDescription.setText(product.getDescription());
+        editTextProductGuarantee.setText(product.getGuarantee() + "");
     }
 
     private Product getProductInfoFromBundle(Bundle bundle) {
