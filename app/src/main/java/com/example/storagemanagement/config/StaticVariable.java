@@ -10,6 +10,7 @@ public class StaticVariable {
     public static final String TABLE_GOODS_DELIVERY_NOTE = "goods_delivery_note";
     public static final String TABLE_GOODS_DELIVERY_NOTE_DETAIL = "goods_delivery_note_detail";
     public static final String TABLE_GOODS_RECEIVED_NOTE = "goods_received_note";
+    public static final String TABLE_GOODS_RECEIVED_NOTE_DETAIL = "goods_received_note_detail";
     public static final int DATABASE_Version = 1;
     public static final String MESSAGE_CREATE_SUCCESS = "Tạo mới thành công";
     public static final String MESSAGE_DELETE_SUCCESS = "Xóa thành công";
@@ -46,6 +47,7 @@ public class StaticVariable {
     public static final String DROP_TABLE_GOODS_DELIVERY_NOTE = "DROP TABLE IF EXISTS " + TABLE_GOODS_DELIVERY_NOTE;
     public static final String DROP_TABLE_GOODS_DELIVERY_NOTE_DETAIL = "DROP TABLE IF EXISTS " + TABLE_GOODS_DELIVERY_NOTE_DETAIL;
     public static final String DROP_TABLE_GOODS_RECEIVED_NOTE = "DROP TABLE IF EXISTS " + TABLE_GOODS_RECEIVED_NOTE;
+    public static final String DROP_TABLE_GOODS_RECEIVED_NOTE_DETAIL = "DROP TABLE IF EXISTS " + TABLE_GOODS_RECEIVED_NOTE_DETAIL;
     public static final String SELECT_ALL_ATTRIBUTE = "SELECT * FROM ";
     public static final String WHERE = "WHERE";
     public static final String DELETE_PRODUCT = "Xóa thông tin sản phẩm";
@@ -76,4 +78,7 @@ public class StaticVariable {
             " (" + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + GOODS_RECEIVED_NOTE_ID + " VARCHAR(255) ,"
             + DATE + " VARCHAR(225) ," + SUPPLIER_ID + " VARCHAR(225) ," + WAREHOUSE_ID + " VARCHAR(225) ,"
             + EMPLOYEE_ID + " VARCHAR(225) ," + NOTICE + " VARCHAR(225));";
+    public static final String CREATE_TABLE_GOODS_RECEIVED_NOTE_DETAIL = "CREATE TABLE " + TABLE_GOODS_DELIVERY_NOTE_DETAIL +
+            " (" + GOODS_RECEIVED_NOTE_ID + " VARCHAR(255) ,"
+            + PRODUCT_ID + " VARCHAR(225) ," + QUANTITY + " INTEGER ," + PRICE + " REAL);";
 }
