@@ -8,6 +8,7 @@ public class StaticVariable {
     public static final String TABLE_EMPLOYEE = "employees";
     public static final String TABLE_WAREHOUSE = "warehouses";
     public static final String TABLE_GOODS_DELIVERY_NOTE = "goods_delivery_note";
+    public static final String TABLE_GOODS_DELIVERY_NOTE_DETAIL = "goods_delivery_note_detail";
     public static final int DATABASE_Version = 1;
     public static final String MESSAGE_CREATE_SUCCESS = "Tạo mới thành công";
     public static final String MESSAGE_DELETE_SUCCESS = "Xóa thành công";
@@ -30,6 +31,8 @@ public class StaticVariable {
     public static final String SEX = "sex";
     public static final String DATE = "date";
     public static final String NOTICE = "notice";
+    public static final String QUANTITY = "quantity";
+    public static final String PRICE = "price";
     public static final String CREATE_TABLE_PRODUCT = "CREATE TABLE " + TABLE_PRODUCT +
             " (" + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + PRODUCT_ID + " VARCHAR(255) ,"
             + NAME + " VARCHAR(225) ," + DESCRIPTION + " VARCHAR(225) ," + GUARANTEE + " INTEGER);";
@@ -39,6 +42,7 @@ public class StaticVariable {
     public static final String DROP_TABLE_EMPLOYEE = "DROP TABLE IF EXISTS " + TABLE_EMPLOYEE;
     public static final String DROP_TABLE_WAREHOUSE = "DROP TABLE IF EXISTS " + TABLE_WAREHOUSE;
     public static final String DROP_TABLE_GOODS_DELIVERY_NOTE = "DROP TABLE IF EXISTS " + TABLE_GOODS_DELIVERY_NOTE;
+    public static final String DROP_TABLE_GOODS_DELIVERY_NOTE_DETAIL = "DROP TABLE IF EXISTS " + TABLE_GOODS_DELIVERY_NOTE_DETAIL;
     public static final String SELECT_ALL_ATTRIBUTE = "SELECT * FROM ";
     public static final String WHERE = "WHERE";
     public static final String DELETE_PRODUCT = "Xóa thông tin sản phẩm";
@@ -62,4 +66,7 @@ public class StaticVariable {
             " (" + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + GOODS_DELIVERY_NOTE_ID + " VARCHAR(255) ,"
             + DATE + " VARCHAR(225) ," + CUSTOMER_ID + " VARCHAR(225) ," + WAREHOUSE_ID + " VARCHAR(225) ,"
             + EMPLOYEE_ID + " VARCHAR(225) ," + NOTICE + " VARCHAR(225));";
+    public static final String CREATE_TABLE_GOODS_DELIVERY_NOTE_DETAIL = "CREATE TABLE " + TABLE_GOODS_DELIVERY_NOTE_DETAIL +
+            " (" +  GOODS_DELIVERY_NOTE_ID + " VARCHAR(255) ,"
+            + PRODUCT_ID + " VARCHAR(225) ," + QUANTITY + " INTEGER ," + PRICE + " REAL);";
 }

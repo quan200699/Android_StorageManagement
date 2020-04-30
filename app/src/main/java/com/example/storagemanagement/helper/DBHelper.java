@@ -25,6 +25,7 @@ public class DBHelper extends SQLiteOpenHelper {
             db.execSQL(CREATE_TABLE_EMPLOYEE);
             db.execSQL(CREATE_TABLE_WAREHOUSE);
             db.execSQL(CREATE_TABLE_GOODS_DELIVERY_NOTE);
+            db.execSQL(CREATE_TABLE_GOODS_DELIVERY_NOTE_DETAIL);
         } catch (Exception e) {
             Log.e("TEXT", "" + e);
         }
@@ -39,6 +40,7 @@ public class DBHelper extends SQLiteOpenHelper {
             db.execSQL(DROP_TABLE_EMPLOYEE);
             db.execSQL(DROP_TABLE_WAREHOUSE);
             db.execSQL(DROP_TABLE_GOODS_DELIVERY_NOTE);
+            db.execSQL(DROP_TABLE_GOODS_DELIVERY_NOTE_DETAIL);
             onCreate(db);
         } catch (Exception e) {
             Log.e("TEXT", "" + e);
