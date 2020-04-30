@@ -92,7 +92,9 @@ public class ProductDao implements IProductDao {
         contentValues.put(DESCRIPTION, product.getDescription());
         contentValues.put(GUARANTEE, product.getGuarantee());
         String[] arguments = new String[]{id + ""};
-        int result = sqLiteDatabase.update(TABLE_PRODUCT, contentValues, ID + "= ?", arguments);
+        StringBuilder whereClause = new StringBuilder(ID);
+        whereClause.append("=").append("?");
+        int result = sqLiteDatabase.update(TABLE_PRODUCT, contentValues, whereClause.toString(), arguments);
         return result != 0;
     }
 }
