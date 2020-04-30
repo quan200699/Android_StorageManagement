@@ -1,4 +1,4 @@
-package com.example.storagemanagement.activity;
+package com.example.storagemanagement.activity.product;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;

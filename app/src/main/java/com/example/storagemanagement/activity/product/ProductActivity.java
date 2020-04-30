@@ -1,4 +1,4 @@
-package com.example.storagemanagement.activity;
+package com.example.storagemanagement.activity.product;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.storagemanagement.R;
+import com.example.storagemanagement.activity.MainActivity;
 import com.example.storagemanagement.adapter.ProductAdapter;
 import com.example.storagemanagement.dao.product.IProductDao;
 import com.example.storagemanagement.dao.product.ProductDao;
