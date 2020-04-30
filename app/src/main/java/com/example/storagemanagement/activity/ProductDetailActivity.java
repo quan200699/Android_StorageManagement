@@ -61,9 +61,9 @@ public class ProductDetailActivity extends AppCompatActivity {
     private void showPopup(final int id) {
         AlertDialog.Builder builder = new AlertDialog.Builder(ProductDetailActivity.this);
         final boolean isDeleted = productDao.removeById(id);
-        builder.setTitle("Xóa thông tin sản phẩm");
-        builder.setMessage("Bạn có chắc muốn xóa thông tin sản phẩm này?");
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        builder.setTitle(DELETE_PRODUCT);
+        builder.setMessage(ARE_YOU_SURE);
+        builder.setPositiveButton(YES, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 showMessage(isDeleted, MESSAGE_DELETE_SUCCESS);
@@ -71,10 +71,10 @@ public class ProductDetailActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(NO, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(getApplicationContext(), "Cancel", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), CANCEL, Toast.LENGTH_SHORT).show();
             }
         });
         AlertDialog dialog = builder.create();

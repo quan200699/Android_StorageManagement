@@ -18,6 +18,10 @@ public class StaticVariable {
             + NAME + " VARCHAR(225) ," + DESCRIPTION + " VARCHAR(225) ," + GUARANTEE + " INTEGER);";
     public static final String DROP_TABLE_PRODUCT = "DROP TABLE IF EXISTS " + TABLE_PRODUCT;
     public static final String SELECT_ALL_ATTRIBUTE = "SELECT * FROM ";
-    public static final String SELECT_PRODUCT_BY_ID = "SELECT * FROM " + TABLE_PRODUCT + " WHERE ID=";
     public static final String WHERE = "WHERE";
+    public static final String DELETE_PRODUCT = "Xóa thông tin sản phẩm";
+    public static final String ARE_YOU_SURE = "Bạn có chắc muốn xóa thông tin sản phẩm này?";
+    public static final String YES = "Yes";
+    public static final String NO = "No";
+    public static final String CANCEL = "Cancel";
 }
