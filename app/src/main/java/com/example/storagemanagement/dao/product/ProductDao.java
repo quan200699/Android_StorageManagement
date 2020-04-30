@@ -54,7 +54,9 @@ public class ProductDao implements IProductDao {
     public List<Product> findAll() {
         List<Product> products = new ArrayList<>();
         SQLiteDatabase sqLiteDatabase = this.dbHelper.getReadableDatabase();
-        Cursor res = sqLiteDatabase.rawQuery(SELECT_ALL_PRODUCT, null);
+        StringBuilder query = new StringBuilder(SELECT_ALL_ATTRIBUTE);
+        query.append(TABLE_PRODUCT);
+        Cursor res = sqLiteDatabase.rawQuery(query.toString(), null);
         res.moveToFirst();
         while (!res.isAfterLast()) {
             int id = res.getInt(res.getColumnIndex(ID));
