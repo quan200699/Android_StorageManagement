@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.storagemanagement.R;
 import com.example.storagemanagement.dao.product.IProductDao;
@@ -34,9 +36,30 @@ public class ProductDetailActivity extends AppCompatActivity {
         init();
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
-            Product productInfoFromBundle = getProductInfoFromBundle(bundle);
+            final Product productInfoFromBundle = getProductInfoFromBundle(bundle);
             setEditTextDefaultValue(productInfoFromBundle);
+            buttonEdit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Product newProduct = getProductInfoFromLayout();
+                    newProduct.setId(productInfoFromBundle.getId());
+                    boolean isUpdated = productDao.updateById(productInfoFromBundle.getId(), newProduct);
+                    if (isUpdated) {
+                        Toast.makeText(getApplicationContext(), MESSAGE_UPDATE_SUCCESS, Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), MESSAGE_FAIL, Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
         }
+    }
+
+    private Product getProductInfoFromLayout() {
+        String productId = editTextProductId.getText().toString();
+        String productName = editTextProductName.getText().toString();
+        String productDescription = editTextProductDescription.getText().toString();
+        int productGuarantee = Integer.parseInt(editTextProductGuarantee.getText().toString());
+        return new Product(productId, productName, productDescription, productGuarantee);
     }
 
     private void setEditTextDefaultValue(Product product) {
