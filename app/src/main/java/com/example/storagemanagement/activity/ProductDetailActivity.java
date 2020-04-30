@@ -44,13 +44,17 @@ public class ProductDetailActivity extends AppCompatActivity {
                     Product newProduct = getProductInfoFromLayout();
                     newProduct.setId(productInfoFromBundle.getId());
                     boolean isUpdated = productDao.updateById(productInfoFromBundle.getId(), newProduct);
-                    if (isUpdated) {
-                        Toast.makeText(getApplicationContext(), MESSAGE_UPDATE_SUCCESS, Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(getApplicationContext(), MESSAGE_FAIL, Toast.LENGTH_SHORT).show();
-                    }
+                    showMessage(isUpdated);
                 }
             });
+        }
+    }
+
+    private void showMessage(boolean isSuccess) {
+        if (isSuccess) {
+            Toast.makeText(getApplicationContext(), MESSAGE_UPDATE_SUCCESS, Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getApplicationContext(), MESSAGE_FAIL, Toast.LENGTH_SHORT).show();
         }
     }
 
