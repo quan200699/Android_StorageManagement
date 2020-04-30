@@ -20,6 +20,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         try {
             db.execSQL(CREATE_TABLE_PRODUCT);
+            db.execSQL(CREATE_TABLE_CUSTOMER);
         } catch (Exception e) {
             Log.e("TEXT", "" + e);
         }
@@ -28,6 +29,7 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         try {
+            db.execSQL(DROP_TABLE_PRODUCT);
             db.execSQL(DROP_TABLE_PRODUCT);
             onCreate(db);
         } catch (Exception e) {

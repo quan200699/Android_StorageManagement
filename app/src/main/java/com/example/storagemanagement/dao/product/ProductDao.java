@@ -29,7 +29,7 @@ public class ProductDao implements IProductDao {
         contentValues.put(DESCRIPTION, product.getDescription());
         contentValues.put(GUARANTEE, product.getGuarantee());
         long result = sqLiteDatabase.insert(TABLE_PRODUCT, null, contentValues);
-        return result == -1 ? product : null;
+        return result != -1 ? product : null;
     }
 
     @Override
