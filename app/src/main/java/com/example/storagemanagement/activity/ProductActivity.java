@@ -39,6 +39,7 @@ public class ProductActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(ProductActivity.this, ProductDetailActivity.class);
+                intent.putExtra(ID, products.get(position).getId());
                 intent.putExtra(PRODUCT_ID, products.get(position).getProductId());
                 intent.putExtra(NAME, products.get(position).getName());
                 intent.putExtra(DESCRIPTION, products.get(position).getDescription());
