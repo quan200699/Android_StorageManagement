@@ -30,7 +30,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         try {
             db.execSQL(DROP_TABLE_PRODUCT);
-            db.execSQL(DROP_TABLE_PRODUCT);
+            db.execSQL(DROP_TABLE_CUSTOMER);
             onCreate(db);
         } catch (Exception e) {
             Log.e("TEXT", "" + e);

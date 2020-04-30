@@ -21,6 +21,7 @@ public class StaticVariable {
             " (" + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + PRODUCT_ID + " VARCHAR(255) ,"
             + NAME + " VARCHAR(225) ," + DESCRIPTION + " VARCHAR(225) ," + GUARANTEE + " INTEGER);";
     public static final String DROP_TABLE_PRODUCT = "DROP TABLE IF EXISTS " + TABLE_PRODUCT;
+    public static final String DROP_TABLE_CUSTOMER = "DROP TABLE IF EXISTS " + TABLE_CUSTOMER;
     public static final String SELECT_ALL_ATTRIBUTE = "SELECT * FROM ";
     public static final String WHERE = "WHERE";
     public static final String DELETE_PRODUCT = "Xóa thông tin sản phẩm";
