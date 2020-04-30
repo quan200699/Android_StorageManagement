@@ -36,6 +36,7 @@ public class AddProductActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Product product = createNewProduct();
                 showMessage(product);
+                resetForm();
             }
         });
     }
@@ -45,7 +46,6 @@ public class AddProductActivity extends AppCompatActivity {
             Toast.makeText(this, MESSAGE_CREATE_SUCCESS, Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, MESSAGE_FAIL, Toast.LENGTH_SHORT).show();
-            resetForm();
         }
     }
 

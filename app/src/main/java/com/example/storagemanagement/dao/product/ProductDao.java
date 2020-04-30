@@ -77,7 +77,9 @@ public class ProductDao implements IProductDao {
     public boolean removeById(int id) {
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
         String[] arguments = new String[]{id + ""};
-        int result = sqLiteDatabase.delete(TABLE_PRODUCT, ID + " = ? ", arguments);
+        StringBuilder whereClause = new StringBuilder(ID);
+        whereClause.append("=").append("?");
+        int result = sqLiteDatabase.delete(TABLE_PRODUCT, whereClause.toString(), arguments);
         return result != 0;
     }
 
