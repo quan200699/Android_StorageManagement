@@ -76,6 +76,14 @@ public class ProductDao implements IProductDao {
 
     @Override
     public boolean updateById(int id, Product product) {
-        return false;
+        SQLiteDatabase sqLiteDatabase = this.dbHelper.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(PRODUCT_ID, product.getProductId());
+        contentValues.put(NAME, product.getName());
+        contentValues.put(DESCRIPTION, product.getDescription());
+        contentValues.put(GUARANTEE, product.getGuarantee());
+        String[] arguments = new String[]{id + ""};
+        int result = sqLiteDatabase.update(TABLE_PRODUCT, contentValues, ID + "= ?", arguments);
+        return result != 0;
     }
 }
