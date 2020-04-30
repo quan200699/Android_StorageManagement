@@ -19,4 +19,5 @@ public class StaticVariable {
     public static final String DROP_TABLE_PRODUCT = "DROP TABLE IF EXISTS " + TABLE_PRODUCT;
     public static final String SELECT_ALL_ATTRIBUTE = "SELECT * FROM ";
     public static final String SELECT_PRODUCT_BY_ID = "SELECT * FROM " + TABLE_PRODUCT + " WHERE ID=";
+    public static final String WHERE = "WHERE";
 }
