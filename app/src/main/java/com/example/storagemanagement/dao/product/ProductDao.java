@@ -71,7 +71,10 @@ public class ProductDao implements IProductDao {
 
     @Override
     public boolean removeById(int id) {
-        return false;
+        SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
+        String[] arguments = new String[]{id + ""};
+        int result = sqLiteDatabase.delete(TABLE_PRODUCT, ID + " = ? ", arguments);
+        return result != 0;
     }
 
     @Override
