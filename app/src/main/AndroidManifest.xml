@@ -9,8 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.customer.AddCustomerActivity"
-            android:label="@string/create_customer"/>
+        <activity
+            android:name=".activity.customer.CustomerDetailActivity"
+            android:label="@string/info_customer" />
+        <activity
+            android:name=".activity.customer.AddCustomerActivity"
+            android:label="@string/create_customer" />
         <activity
             android:name=".activity.customer.CustomerActivity"
             android:label="@string/list_customer" />

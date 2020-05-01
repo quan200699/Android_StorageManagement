@@ -4,21 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.product.AddProductActivity">
+    tools:context=".activity.customer.CustomerDetailActivity">
 
     <Button
-        android:id="@+id/buttonSave"
+        android:id="@+id/buttonEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="148dp"
-        android:layout_marginRight="148dp"
+        android:layout_marginEnd="72dp"
+        android:layout_marginRight="72dp"
         android:layout_marginBottom="96dp"
-        android:text="@string/add"
+        android:text="@string/edit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonDelete" />
+
+    <Button
+        android:id="@+id/buttonDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="88dp"
+        android:layout_marginRight="88dp"
+        android:layout_marginBottom="96dp"
+        android:text="@string/delete"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
-        android:id="@+id/editTextProductId"
+        android:id="@+id/editTextCustomerId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
@@ -26,11 +37,11 @@
         android:layout_marginBottom="48dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/editTextProductName"
+        app:layout_constraintBottom_toTopOf="@+id/editTextCustomerName"
         app:layout_constraintStart_toEndOf="@+id/textView3" />
 
     <EditText
-        android:id="@+id/editTextProductName"
+        android:id="@+id/editTextCustomerName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
@@ -38,31 +49,31 @@
         android:layout_marginBottom="48dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/editTextGuarantee"
+        app:layout_constraintBottom_toTopOf="@+id/editTextCustomerAddress"
         app:layout_constraintStart_toEndOf="@+id/textView4" />
 
     <EditText
-        android:id="@+id/editTextGuarantee"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginBottom="44dp"
-        android:ems="10"
-        android:inputType="number|text"
-        app:layout_constraintBottom_toTopOf="@+id/editTextProductDescription"
-        app:layout_constraintStart_toEndOf="@+id/textView5" />
-
-    <EditText
-        android:id="@+id/editTextProductDescription"
+        android:id="@+id/editTextCustomerAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="104dp"
         android:layout_marginLeft="104dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="48dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/buttonSave"
+        app:layout_constraintBottom_toTopOf="@+id/editTextPhoneNumber"
+        app:layout_constraintStart_toEndOf="@+id/textView5" />
+
+    <EditText
+        android:id="@+id/editTextPhoneNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginLeft="56dp"
+        android:layout_marginBottom="48dp"
+        android:ems="10"
+        android:inputType="phone"
+        app:layout_constraintBottom_toTopOf="@+id/buttonDelete"
         app:layout_constraintStart_toEndOf="@+id/textView6"
         tools:ignore="RtlHardcoded" />
 
@@ -72,8 +83,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
-        android:text="@string/product_id"
-        app:layout_constraintBaseline_toBaselineOf="@+id/editTextProductId"
+        android:text="@string/customer_id"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editTextCustomerId"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -82,8 +93,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
-        android:text="@string/product_name"
-        app:layout_constraintBaseline_toBaselineOf="@+id/editTextProductName"
+        android:text="@string/customer_name"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editTextCustomerName"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -92,17 +103,17 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
-        android:text="@string/product_guarantee"
-        app:layout_constraintBaseline_toBaselineOf="@+id/editTextGuarantee"
+        android:text="@string/address"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editTextCustomerAddress"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:text="@string/product_description"
-        app:layout_constraintBaseline_toBaselineOf="@+id/editTextProductDescription"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:text="@string/phone_number"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editTextPhoneNumber"
         app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
