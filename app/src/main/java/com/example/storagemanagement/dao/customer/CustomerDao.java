@@ -62,9 +62,9 @@ public class CustomerDao implements ICustomerDao {
         res.moveToFirst();
         while (!res.isAfterLast()) {
             int id = res.getInt(res.getColumnIndex(ID));
-            String customerId = res.getString(res.getColumnIndex(PRODUCT_ID));
+            String customerId = res.getString(res.getColumnIndex(CUSTOMER_ID));
             String name = res.getString(res.getColumnIndex(NAME));
-            String address = res.getString(res.getColumnIndex(DESCRIPTION));
+            String address = res.getString(res.getColumnIndex(ADDRESS));
             String phoneNumber = res.getString(res.getColumnIndex(PHONE_NUMBER));
             customers.add(new Customer(id, customerId, name, address, phoneNumber));
             res.moveToNext();
