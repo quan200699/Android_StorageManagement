@@ -12,8 +12,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.storagemanagement.R;
-import com.example.storagemanagement.activity.product.AddProductActivity;
-import com.example.storagemanagement.activity.product.ProductActivity;
 import com.example.storagemanagement.dao.customer.CustomerDao;
 import com.example.storagemanagement.dao.customer.ICustomerDao;
 import com.example.storagemanagement.model.Customer;
