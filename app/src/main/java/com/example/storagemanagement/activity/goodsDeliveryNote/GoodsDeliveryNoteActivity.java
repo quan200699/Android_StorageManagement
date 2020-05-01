@@ -11,6 +11,7 @@ import android.widget.ListView;
 
 import com.example.storagemanagement.R;
 import com.example.storagemanagement.activity.MainActivity;
+import com.example.storagemanagement.adapter.GoodsDeliveryNoteAdapter;
 import com.example.storagemanagement.dao.goodsDeliveryNote.GoodsDeliveryNoteDao;
 import com.example.storagemanagement.dao.goodsDeliveryNote.IGoodsDeliveryNoteDao;
 import com.example.storagemanagement.model.GoodsDeliveryNote;
@@ -29,6 +30,9 @@ public class GoodsDeliveryNoteActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         init();
+        List<GoodsDeliveryNote> goodsDeliveryNotes = goodsDeliveryNoteDao.findAll();
+        GoodsDeliveryNoteAdapter goodsDeliveryNoteAdapter = new GoodsDeliveryNoteAdapter(GoodsDeliveryNoteActivity.this, goodsDeliveryNotes);
+        listViewGoodsDeliveryNote.setAdapter(goodsDeliveryNoteAdapter);
     }
 
     private void init() {
