@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.storagemanagement.R;
 import com.example.storagemanagement.dao.warehouse.IWarehouseDao;
@@ -35,7 +37,31 @@ public class WarehouseDetailActivity extends AppCompatActivity {
         if (bundle != null) {
             final Warehouse warehouseInfoFromBundle = getWarehouseInfoFromBundle(bundle);
             setEditTextDefaultValue(warehouseInfoFromBundle);
+            buttonEdit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Warehouse warehouse = getWarehouseInfoFromLayout();
+                    warehouse.setId(warehouseInfoFromBundle.getId());
+                    boolean isUpdated = warehouseDao.updateById(warehouseInfoFromBundle.getId(), warehouse);
+                    showMessage(isUpdated, MESSAGE_UPDATE_SUCCESS);
+                }
+            });
         }
+    }
+
+    private void showMessage(boolean isSuccess, String message) {
+        if (isSuccess) {
+            Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getApplicationContext(), MESSAGE_FAIL, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private Warehouse getWarehouseInfoFromLayout() {
+        String wareHouseId = editTextWarehouseId.getText().toString();
+        String warehouseName = editTextWarehouseName.getText().toString();
+        String warehouseAddress = editTextWarehouseAddress.getText().toString();
+        return new Warehouse(wareHouseId, warehouseName, warehouseAddress);
     }
 
     private void setEditTextDefaultValue(Warehouse warehouse) {
@@ -45,8 +71,8 @@ public class WarehouseDetailActivity extends AppCompatActivity {
     }
 
     private Warehouse getWarehouseInfoFromBundle(Bundle bundle) {
-        String wareHouseId = bundle.getString(WAREHOUSE_ID);
         int id = bundle.getInt(ID);
+        String wareHouseId = bundle.getString(WAREHOUSE_ID);
         String warehouseName = bundle.getString(NAME);
         String warehouseAddress = bundle.getString(ADDRESS);
         return new Warehouse(id, wareHouseId, warehouseName, warehouseAddress);
