@@ -11,10 +11,17 @@ import android.widget.ListView;
 
 import com.example.storagemanagement.R;
 import com.example.storagemanagement.activity.MainActivity;
+import com.example.storagemanagement.dao.goodsDeliveryNote.GoodsDeliveryNoteDao;
+import com.example.storagemanagement.dao.goodsDeliveryNote.IGoodsDeliveryNoteDao;
+import com.example.storagemanagement.model.GoodsDeliveryNote;
+
+import java.util.List;
 
 public class GoodsDeliveryNoteActivity extends AppCompatActivity {
     private ListView listViewGoodsDeliveryNote;
     private Button buttonAdd;
+    private IGoodsDeliveryNoteDao goodsDeliveryNoteDao;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +32,9 @@ public class GoodsDeliveryNoteActivity extends AppCompatActivity {
     }
 
     private void init() {
+        listViewGoodsDeliveryNote = findViewById(R.id.listViewGoodsDeliveryNote);
+        buttonAdd = findViewById(R.id.buttonAdd);
+        goodsDeliveryNoteDao = new GoodsDeliveryNoteDao(this);
     }
 
     @Override
