@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -18,6 +19,8 @@ import com.example.storagemanagement.dao.warehouse.WarehouseDao;
 import com.example.storagemanagement.model.Warehouse;
 
 import java.util.List;
+
+import static com.example.storagemanagement.config.StaticVariable.*;
 
 public class WarehouseActivity extends AppCompatActivity {
     private ListView listViewWarehouse;
@@ -38,6 +41,17 @@ public class WarehouseActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(WarehouseActivity.this, AddWarehouseActivity.class);
+                startActivity(intent);
+            }
+        });
+        listViewWarehouse.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(WarehouseActivity.this, WarehouseDetailActivity.class);
+                intent.putExtra(ID, warehouses.get(position).getId());
+                intent.putExtra(WAREHOUSE_ID, warehouses.get(position).getWarehouseId());
+                intent.putExtra(NAME, warehouses.get(position).getName());
+                intent.putExtra(ADDRESS, warehouses.get(position).getAddress());
                 startActivity(intent);
             }
         });

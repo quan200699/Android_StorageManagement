@@ -97,11 +97,11 @@ public class CustomerDetailActivity extends AppCompatActivity {
         return new Customer(customerId, customerName, customerAddress, phoneNumber);
     }
 
-    private void setEditTextDefaultValue(Customer customerInfoFromBundle) {
-        editTextCustomerId.setText(customerInfoFromBundle.getCustomerId());
-        editTextCustomerName.setText(customerInfoFromBundle.getName());
-        editTextCustomerAddress.setText(customerInfoFromBundle.getAddress());
-        editTextPhoneNumber.setText(customerInfoFromBundle.getPhoneNumber());
+    private void setEditTextDefaultValue(Customer customer) {
+        editTextCustomerId.setText(customer.getCustomerId());
+        editTextCustomerName.setText(customer.getName());
+        editTextCustomerAddress.setText(customer.getAddress());
+        editTextPhoneNumber.setText(customer.getPhoneNumber());
     }
 
     private Customer getCustomerInfoFromBundle(Bundle bundle) {
