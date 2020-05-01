@@ -49,7 +49,6 @@ public class WarehouseActivity extends AppCompatActivity {
         warehouseDao = new WarehouseDao(this);
     }
 
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
