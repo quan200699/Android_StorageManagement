@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class goodsDeliveryNote {
+public class GoodsDeliveryNote {
     private int id;
     private String goodsDeliveryNoteId;
     private String date;
@@ -16,7 +16,7 @@ public class goodsDeliveryNote {
     private String employeeId;
     private String notice;
 
-    public goodsDeliveryNote(String goodsDeliveryNoteId, String date, String customerId, String wareHouseId, String employeeId, String notice) {
+    public GoodsDeliveryNote(String goodsDeliveryNoteId, String date, String customerId, String wareHouseId, String employeeId, String notice) {
         this.goodsDeliveryNoteId = goodsDeliveryNoteId;
         this.date = date;
         this.customerId = customerId;
