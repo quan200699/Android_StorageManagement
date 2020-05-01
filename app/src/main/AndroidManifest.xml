@@ -9,8 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.warehouse.WarehouseDetailActivity"></activity>
-        <activity android:name=".activity.warehouse.AddWarehouseActivity" />
+        <activity
+            android:name=".activity.warehouse.WarehouseDetailActivity"
+            android:label="@string/info_warehouse" />
+        <activity
+            android:name=".activity.warehouse.AddWarehouseActivity"
+            android:label="@string/create_warehouse" />
         <activity
             android:name=".activity.warehouse.WarehouseActivity"
             android:label="@string/list_warehouse" />
