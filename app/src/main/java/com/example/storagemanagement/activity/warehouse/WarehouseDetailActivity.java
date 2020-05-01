@@ -1,8 +1,10 @@
 package com.example.storagemanagement.activity.warehouse;
 
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -46,7 +48,36 @@ public class WarehouseDetailActivity extends AppCompatActivity {
                     showMessage(isUpdated, MESSAGE_UPDATE_SUCCESS);
                 }
             });
+            buttonDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showPopup(warehouseInfoFromBundle.getId());
+                }
+            });
         }
+    }
+
+    private void showPopup(final int id) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(WarehouseDetailActivity.this);
+        final boolean isDeleted = warehouseDao.removeById(id);
+        builder.setTitle(DELETE_PRODUCT);
+        builder.setMessage(ARE_YOU_SURE);
+        builder.setPositiveButton(YES, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                showMessage(isDeleted, MESSAGE_DELETE_SUCCESS);
+                Intent intent = new Intent(WarehouseDetailActivity.this, WarehouseActivity.class);
+                startActivity(intent);
+            }
+        });
+        builder.setNegativeButton(NO, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(getApplicationContext(), CANCEL, Toast.LENGTH_SHORT).show();
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     private void showMessage(boolean isSuccess, String message) {
