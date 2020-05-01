@@ -18,4 +18,9 @@
     <string name="customer_name">Tên khách hàng</string>
     <string name="address">Địa chỉ</string>
     <string name="phone_number">Số điện thoại</string>
+    <string name="list_warehouse">DANH SÁCH KHO HÀNG</string>
+    <string name="create_warehouse">TẠO MỚI KHO HÀNG</string>
+    <string name="info_warehouse">THÔNG TIN KHO HÀNG</string>
+    <string name="warehouse_id">Mã kho hàng</string>
+    <string name="warehouse_name">Tên kho hàng</string>
 </resources>

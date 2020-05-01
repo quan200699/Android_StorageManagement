@@ -10,10 +10,12 @@ import android.widget.Button;
 import com.example.storagemanagement.R;
 import com.example.storagemanagement.activity.customer.CustomerActivity;
 import com.example.storagemanagement.activity.product.ProductActivity;
+import com.example.storagemanagement.activity.warehouse.WarehouseActivity;
 
 public class MainActivity extends AppCompatActivity {
     private Button buttonProduct;
     private Button buttonCustomer;
+    private Button buttonWarehouse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         init();
         onClickEvent(buttonProduct, ProductActivity.class);
         onClickEvent(buttonCustomer, CustomerActivity.class);
+        onClickEvent(buttonWarehouse, WarehouseActivity.class);
     }
 
     private void onClickEvent(Button button, final Class<?> activity) {
@@ -37,5 +40,6 @@ public class MainActivity extends AppCompatActivity {
     private void init() {
         buttonProduct = findViewById(R.id.buttonProduct);
         buttonCustomer = findViewById(R.id.buttonCustomer);
+        buttonWarehouse = findViewById(R.id.buttonWarehouse);
     }
 }

@@ -13,10 +13,10 @@ import com.example.storagemanagement.model.Warehouse;
 import java.util.List;
 
 public class WarehouseAdapter extends BaseAdapter {
-    private List<Warehouse> warehouses;
     private Context context;
+    private List<Warehouse> warehouses;
 
-    public WarehouseAdapter(List<Warehouse> warehouses, Context context) {
+    public WarehouseAdapter(Context context, List<Warehouse> warehouses) {
         this.warehouses = warehouses;
         this.context = context;
     }

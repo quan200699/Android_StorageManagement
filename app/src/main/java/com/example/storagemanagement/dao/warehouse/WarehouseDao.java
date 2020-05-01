@@ -39,7 +39,7 @@ public class WarehouseDao implements IWarehouseDao {
         query.append(TABLE_WAREHOUSE).append(" ").append(WHERE).append(" ").append(ID).append("=").append(id);
         Cursor cursor = sqLiteDatabase.rawQuery(query.toString(), null);
         cursor.moveToFirst();
-        while (!cursor.moveToLast()) {
+        while (!cursor.isAfterLast()) {
             String warehouseId = cursor.getString(cursor.getColumnIndex(WAREHOUSE_ID));
             String warehouseName = cursor.getString(cursor.getColumnIndex(NAME));
             String address = cursor.getString(cursor.getColumnIndex(ADDRESS));
@@ -58,7 +58,7 @@ public class WarehouseDao implements IWarehouseDao {
         query.append(TABLE_WAREHOUSE);
         Cursor cursor = sqLiteDatabase.rawQuery(query.toString(), null);
         cursor.moveToFirst();
-        while (!cursor.moveToLast()) {
+        while (!cursor.isAfterLast()) {
             int id = cursor.getInt(cursor.getColumnIndex(ID));
             String warehouseId = cursor.getString(cursor.getColumnIndex(WAREHOUSE_ID));
             String warehouseName = cursor.getString(cursor.getColumnIndex(NAME));

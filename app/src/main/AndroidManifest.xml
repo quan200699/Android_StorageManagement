@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".activity.warehouse.WarehouseActivity"
+            android:label="@string/list_warehouse" />
+        <activity
             android:name=".activity.customer.CustomerDetailActivity"
             android:label="@string/info_customer" />
         <activity

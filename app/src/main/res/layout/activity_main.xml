@@ -21,8 +21,19 @@
         android:id="@+id/buttonCustomer"
         android:layout_width="200dp"
         android:layout_height="65dp"
-        android:layout_marginBottom="220dp"
+        android:layout_marginBottom="64dp"
         android:text="@string/list_customer"
+        app:layout_constraintBottom_toTopOf="@+id/buttonWarehouse"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonWarehouse"
+        android:layout_width="200dp"
+        android:layout_height="65dp"
+        android:layout_marginBottom="96dp"
+        android:text="@string/list_warehouse"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -32,11 +43,14 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
         android:layout_marginBottom="80dp"
         android:text="@string/app_title"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/buttonProduct"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
