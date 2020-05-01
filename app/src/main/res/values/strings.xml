@@ -23,4 +23,10 @@
     <string name="info_warehouse">THÔNG TIN KHO HÀNG</string>
     <string name="warehouse_id">Mã kho hàng</string>
     <string name="warehouse_name">Tên kho hàng</string>
+    <string name="list_goods_delivery_note">DANH SÁCH PHIẾU XUẤT</string>
+    <string name="create_goods_delivery_note">TẠO MỚI PHIẾU XUẤT</string>
+    <string name="info_goods_delivery_note">THÔNG TIN PHIẾU XUẤT</string>
+    <string name="goods_delivery_note_id">Mã phiếu xuất</string>
+    <string name="date">Ngày tháng</string>
+    <string name="notice">Ghi chú</string>
 </resources>
