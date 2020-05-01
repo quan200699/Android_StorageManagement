@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.storagemanagement.R;
 import com.example.storagemanagement.dao.customer.CustomerDao;
@@ -36,7 +38,32 @@ public class CustomerDetailActivity extends AppCompatActivity {
         if (bundle != null) {
             final Customer customerInfoFromBundle = getCustomerInfoFromBundle(bundle);
             setEditTextDefaultValue(customerInfoFromBundle);
+            buttonEdit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Customer customer = getCustomerInfoFromLayout();
+                    customer.setId(customerInfoFromBundle.getId());
+                    boolean isUpdated = customerDao.updateById(customerInfoFromBundle.getId(), customer);
+                    showMessage(isUpdated, MESSAGE_UPDATE_SUCCESS);
+                }
+            });
         }
+    }
+
+    private void showMessage(boolean isSuccess, String message) {
+        if (isSuccess) {
+            Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getApplicationContext(), MESSAGE_FAIL, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private Customer getCustomerInfoFromLayout() {
+        String customerId = editTextCustomerId.getText().toString();
+        String customerName = editTextCustomerName.getText().toString();
+        String customerAddress = editTextCustomerAddress.getText().toString();
+        String phoneNumber = editTextPhoneNumber.getText().toString();
+        return new Customer(customerId, customerName, customerAddress, phoneNumber);
     }
 
     private void setEditTextDefaultValue(Customer customerInfoFromBundle) {
