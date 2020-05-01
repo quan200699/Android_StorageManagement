@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -33,6 +34,13 @@ public class WarehouseActivity extends AppCompatActivity {
         final List<Warehouse> warehouses = warehouseDao.findAll();
         WarehouseAdapter warehouseAdapter = new WarehouseAdapter(WarehouseActivity.this, warehouses);
         listViewWarehouse.setAdapter(warehouseAdapter);
+        buttonAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(WarehouseActivity.this, AddWarehouseActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void init() {
