@@ -125,7 +125,7 @@
         android:layout_marginStart="44dp"
         android:layout_marginLeft="44dp"
         android:layout_marginBottom="32dp"
-        app:layout_constraintBottom_toTopOf="@+id/spinner3"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerEmployee"
         app:layout_constraintStart_toEndOf="@+id/textView7" />
 
     <TextView
@@ -140,7 +140,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Spinner
-        android:id="@+id/spinner3"
+        android:id="@+id/spinnerEmployee"
         android:layout_width="210dp"
         android:layout_height="30dp"
         android:layout_marginStart="40dp"
