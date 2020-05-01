@@ -77,7 +77,6 @@ public class AddProductActivity extends AppCompatActivity {
         productDao = new ProductDao(this);
     }
 
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
