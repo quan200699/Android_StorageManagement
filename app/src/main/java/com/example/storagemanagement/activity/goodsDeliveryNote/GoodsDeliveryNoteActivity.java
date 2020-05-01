@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -33,6 +34,13 @@ public class GoodsDeliveryNoteActivity extends AppCompatActivity {
         List<GoodsDeliveryNote> goodsDeliveryNotes = goodsDeliveryNoteDao.findAll();
         GoodsDeliveryNoteAdapter goodsDeliveryNoteAdapter = new GoodsDeliveryNoteAdapter(GoodsDeliveryNoteActivity.this, goodsDeliveryNotes);
         listViewGoodsDeliveryNote.setAdapter(goodsDeliveryNoteAdapter);
+        buttonAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(GoodsDeliveryNoteActivity.this, AddGoodsDeliveryNoteActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void init() {
