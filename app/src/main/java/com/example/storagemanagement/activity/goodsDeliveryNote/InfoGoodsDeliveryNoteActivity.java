@@ -31,7 +31,7 @@ import java.util.List;
 
 import static com.example.storagemanagement.config.StaticVariable.*;
 
-public class GoodsDeliveryNoteDetailActivity extends AppCompatActivity {
+public class InfoGoodsDeliveryNoteActivity extends AppCompatActivity {
     private EditText editTextGoodsDeliveryNoteId;
     private EditText editTextDate;
     private EditText editTextNotice;
@@ -40,6 +40,7 @@ public class GoodsDeliveryNoteDetailActivity extends AppCompatActivity {
     private Spinner spinnerEmployee;
     private Button buttonEdit;
     private Button buttonDelete;
+    private Button buttonGoodsDeliveryNoteDetail;
     private IGoodsDeliveryNoteDao goodsDeliveryNoteDao;
     private ICustomerDao customerDao;
     private IWarehouseDao warehouseDao;
@@ -49,7 +50,7 @@ public class GoodsDeliveryNoteDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_goods_delivery_note_detail);
+        setContentView(R.layout.activity_info_goods_delivery_note);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         init();
@@ -84,7 +85,7 @@ public class GoodsDeliveryNoteDetailActivity extends AppCompatActivity {
     }
 
     private void showPopup(int id) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(GoodsDeliveryNoteDetailActivity.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(InfoGoodsDeliveryNoteActivity.this);
         final boolean isDeleted = goodsDeliveryNoteDao.removeById(id);
         builder.setTitle(DELETE + GOODS_DELIVERY_NOTE);
         builder.setMessage(ARE_YOU_SURE);
@@ -92,7 +93,7 @@ public class GoodsDeliveryNoteDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 showMessage(isDeleted, MESSAGE_DELETE_SUCCESS);
-                Intent intent = new Intent(GoodsDeliveryNoteDetailActivity.this, GoodsDeliveryNoteActivity.class);
+                Intent intent = new Intent(InfoGoodsDeliveryNoteActivity.this, GoodsDeliveryNoteActivity.class);
                 startActivity(intent);
             }
         });
@@ -211,6 +212,7 @@ public class GoodsDeliveryNoteDetailActivity extends AppCompatActivity {
         spinnerEmployee = findViewById(R.id.spinnerEmployee);
         buttonDelete = findViewById(R.id.buttonDelete);
         buttonEdit = findViewById(R.id.buttonEdit);
+        buttonGoodsDeliveryNoteDetail = findViewById(R.id.buttonGoodsDeliveryNoteDetail);
         goodsDeliveryNoteDao = new GoodsDeliveryNoteDao(this);
         customerDao = new CustomerDao(this);
         warehouseDao = new WarehouseDao(this);
@@ -220,7 +222,7 @@ public class GoodsDeliveryNoteDetailActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                Intent intent = new Intent(GoodsDeliveryNoteDetailActivity.this, GoodsDeliveryNoteActivity.class);
+                Intent intent = new Intent(InfoGoodsDeliveryNoteActivity.this, GoodsDeliveryNoteActivity.class);
                 startActivity(intent);
                 finish();
                 return true;

@@ -29,4 +29,10 @@
     <string name="goods_delivery_note_id">Mã phiếu xuất</string>
     <string name="date">Ngày tháng</string>
     <string name="notice">Ghi chú</string>
+    <string name="list_goods_delivery_note_detail">DANH SÁCH CHI TIẾT PHIẾU XUẤT</string>
+    <string name="create_goods_delivery_note_detail">TẠO MỚI CHI TIẾT PHIẾU XUẤT</string>
+    <string name="info_goods_delivery_note_detail">THÔNG TIN CHI TIẾT PHIẾU XUẤT</string>
+    <string name="quantity">Số lượng</string>
+    <string name="price">Giá</string>
+    <string name="goods_delivery_note_detail">Chi tiết phiếu xuất</string>
 </resources>
