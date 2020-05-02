@@ -6,10 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.storagemanagement.R;
 import com.example.storagemanagement.dao.customer.CustomerDao;
@@ -61,7 +63,42 @@ public class GoodsDeliveryNoteDetailActivity extends AppCompatActivity {
         if (bundle != null) {
             final GoodsDeliveryNote goodsDeliveryNoteFromBundle = getGoodsDeliveryNoteFromBundle(bundle);
             setDefaultValueForLayout(goodsDeliveryNoteFromBundle);
+            buttonEdit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    GoodsDeliveryNote goodsDeliveryNote = getGoodsDeliveryNoteFromLayout();
+                    goodsDeliveryNote.setId(goodsDeliveryNoteFromBundle.getId());
+                    boolean isUpdated = goodsDeliveryNoteDao.updateById(goodsDeliveryNote.getId(), goodsDeliveryNote);
+                    showMessage(isUpdated, MESSAGE_UPDATE_SUCCESS);
+                }
+            });
         }
+    }
+
+    private void showMessage(boolean isSuccess, String message) {
+        if (isSuccess) {
+            Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getApplicationContext(), MESSAGE_FAIL, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private GoodsDeliveryNote getGoodsDeliveryNoteFromLayout() {
+        String goodsDeliveryNoteId = editTextGoodsDeliveryNoteId.getText().toString();
+        String date = editTextDate.getText().toString();
+        String notice = editTextNotice.getText().toString();
+        String customerName = spinnerCustomer.getSelectedItem().toString();
+        String warehouseName = spinnerWarehouse.getSelectedItem().toString();
+        GoodsDeliveryNote goodsDeliveryNote = new GoodsDeliveryNote(goodsDeliveryNoteId, date, notice);
+        Customer customer = customerDao.findByName(customerName);
+        Warehouse warehouse = warehouseDao.findByName(warehouseName);
+        if (customer != null) {
+            goodsDeliveryNote.setCustomerId(customer.getCustomerId());
+        }
+        if (warehouse != null) {
+            goodsDeliveryNote.setWareHouseId(warehouse.getWarehouseId());
+        }
+        return goodsDeliveryNote;
     }
 
     private void setDefaultValueForLayout(GoodsDeliveryNote goodsDeliveryNoteFromBundle) {
