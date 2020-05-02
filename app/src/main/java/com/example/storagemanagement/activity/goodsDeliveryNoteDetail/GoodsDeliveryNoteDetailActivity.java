@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -36,7 +37,7 @@ public class GoodsDeliveryNoteDetailActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             final String goodsDeliveryNoteId = bundle.getString(GOODS_DELIVERY_NOTE_ID);
-            List<GoodsDeliveryNoteDetail> goodsDeliveryNoteDetails = goodsDeliveryNoteDetailDao.findAllByGoodsDeliveryNoteId(goodsDeliveryNoteId);
+            final List<GoodsDeliveryNoteDetail> goodsDeliveryNoteDetails = goodsDeliveryNoteDetailDao.findAllByGoodsDeliveryNoteId(goodsDeliveryNoteId);
             GoodsDeliveryNoteDetailAdapter goodsDeliveryNoteDetailAdapter = new GoodsDeliveryNoteDetailAdapter(GoodsDeliveryNoteDetailActivity.this, goodsDeliveryNoteDetails);
             listViewGoodsDeliveryNote.setAdapter(goodsDeliveryNoteDetailAdapter);
             buttonAdd.setOnClickListener(new View.OnClickListener() {
@@ -44,6 +45,18 @@ public class GoodsDeliveryNoteDetailActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent = new Intent(GoodsDeliveryNoteDetailActivity.this, AddGoodsDeliveryNoteDetailActivity.class);
                     intent.putExtra(GOODS_DELIVERY_NOTE_ID, goodsDeliveryNoteId);
+                    startActivity(intent);
+                }
+            });
+            listViewGoodsDeliveryNote.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Intent intent = new Intent(GoodsDeliveryNoteDetailActivity.this, InfoGoodsDeliveryNoteDetailActivity.class);
+                    intent.putExtra(GOODS_DELIVERY_NOTE_ID, goodsDeliveryNoteId);
+                    intent.putExtra(ID, goodsDeliveryNoteDetails.get(position).getId());
+                    intent.putExtra(PRODUCT_ID, goodsDeliveryNoteDetails.get(position).getProductId());
+                    intent.putExtra(QUANTITY, goodsDeliveryNoteDetails.get(position).getQuantity());
+                    intent.putExtra(PRICE, goodsDeliveryNoteDetails.get(position).getPrice());
                     startActivity(intent);
                 }
             });
