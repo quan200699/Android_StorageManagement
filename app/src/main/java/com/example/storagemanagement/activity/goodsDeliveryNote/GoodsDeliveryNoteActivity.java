@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -18,6 +19,8 @@ import com.example.storagemanagement.dao.goodsDeliveryNote.IGoodsDeliveryNoteDao
 import com.example.storagemanagement.model.GoodsDeliveryNote;
 
 import java.util.List;
+
+import static com.example.storagemanagement.config.StaticVariable.*;
 
 public class GoodsDeliveryNoteActivity extends AppCompatActivity {
     private ListView listViewGoodsDeliveryNote;
@@ -31,13 +34,26 @@ public class GoodsDeliveryNoteActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         init();
-        List<GoodsDeliveryNote> goodsDeliveryNotes = goodsDeliveryNoteDao.findAll();
+        final List<GoodsDeliveryNote> goodsDeliveryNotes = goodsDeliveryNoteDao.findAll();
         GoodsDeliveryNoteAdapter goodsDeliveryNoteAdapter = new GoodsDeliveryNoteAdapter(GoodsDeliveryNoteActivity.this, goodsDeliveryNotes);
         listViewGoodsDeliveryNote.setAdapter(goodsDeliveryNoteAdapter);
         buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(GoodsDeliveryNoteActivity.this, AddGoodsDeliveryNoteActivity.class);
+                startActivity(intent);
+            }
+        });
+        listViewGoodsDeliveryNote.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(GoodsDeliveryNoteActivity.this, GoodsDeliveryNoteDetailActivity.class);
+                intent.putExtra(ID, goodsDeliveryNotes.get(position).getId());
+                intent.putExtra(GOODS_DELIVERY_NOTE_ID, goodsDeliveryNotes.get(position).getGoodsDeliveryNoteId());
+                intent.putExtra(DATE, goodsDeliveryNotes.get(position).getDate());
+                intent.putExtra(CUSTOMER_ID, goodsDeliveryNotes.get(position).getEmployeeId());
+                intent.putExtra(WAREHOUSE_ID, goodsDeliveryNotes.get(position).getWareHouseId());
+                intent.putExtra(NOTICE, goodsDeliveryNotes.get(position).getNotice());
                 startActivity(intent);
             }
         });
