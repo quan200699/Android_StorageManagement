@@ -20,4 +20,10 @@ public class GoodsDeliveryNoteDetail {
         this.quantity = quantity;
         this.price = price;
     }
+
+    public GoodsDeliveryNoteDetail(String goodsDeliveryNoteId, int quantity, double price) {
+        this.goodsDeliveryNoteId = goodsDeliveryNoteId;
+        this.quantity = quantity;
+        this.price = price;
+    }
 }
