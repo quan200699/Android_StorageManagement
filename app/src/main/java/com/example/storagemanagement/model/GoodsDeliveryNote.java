@@ -31,5 +31,12 @@ public class GoodsDeliveryNote {
         this.notice = notice;
     }
 
-
+    public GoodsDeliveryNote(int id, String goodsDeliveryNoteId, String date, String customerId, String wareHouseId, String notice) {
+        this.id = id;
+        this.goodsDeliveryNoteId = goodsDeliveryNoteId;
+        this.date = date;
+        this.customerId = customerId;
+        this.wareHouseId = wareHouseId;
+        this.notice = notice;
+    }
 }

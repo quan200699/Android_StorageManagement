@@ -51,7 +51,7 @@ public class GoodsDeliveryNoteActivity extends AppCompatActivity {
                 intent.putExtra(ID, goodsDeliveryNotes.get(position).getId());
                 intent.putExtra(GOODS_DELIVERY_NOTE_ID, goodsDeliveryNotes.get(position).getGoodsDeliveryNoteId());
                 intent.putExtra(DATE, goodsDeliveryNotes.get(position).getDate());
-                intent.putExtra(CUSTOMER_ID, goodsDeliveryNotes.get(position).getEmployeeId());
+                intent.putExtra(CUSTOMER_ID, goodsDeliveryNotes.get(position).getCustomerId());
                 intent.putExtra(WAREHOUSE_ID, goodsDeliveryNotes.get(position).getWareHouseId());
                 intent.putExtra(NOTICE, goodsDeliveryNotes.get(position).getNotice());
                 startActivity(intent);
