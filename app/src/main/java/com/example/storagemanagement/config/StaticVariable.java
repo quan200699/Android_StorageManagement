@@ -43,8 +43,12 @@ public class StaticVariable {
     public static final String SELECT_ALL_ATTRIBUTE = "SELECT * FROM ";
     public static final String WHERE = "WHERE";
 
-    public static final String DELETE_PRODUCT = "Xóa thông tin sản phẩm";
-    public static final String ARE_YOU_SURE = "Bạn có chắc muốn xóa thông tin sản phẩm này?";
+    public static final String DELETE = "Xóa thông tin ";
+    public static final String ARE_YOU_SURE = "Bạn có chắc muốn xóa thông tin này?";
+    public static final String PRODUCT = "sản phẩm";
+    public static final String CUSTOMER = "khách hàng";
+    public static final String WAREHOUSE = "kho hàng";
+    public static final String GOODS_DELIVERY_NOTE = "phiếu xuất kho";
     public static final String YES = "Yes";
     public static final String NO = "No";
     public static final String CANCEL = "Cancel";

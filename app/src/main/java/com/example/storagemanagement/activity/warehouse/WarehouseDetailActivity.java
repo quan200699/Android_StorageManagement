@@ -60,7 +60,7 @@ public class WarehouseDetailActivity extends AppCompatActivity {
     private void showPopup(final int id) {
         AlertDialog.Builder builder = new AlertDialog.Builder(WarehouseDetailActivity.this);
         final boolean isDeleted = warehouseDao.removeById(id);
-        builder.setTitle(DELETE_PRODUCT);
+        builder.setTitle(DELETE + WAREHOUSE);
         builder.setMessage(ARE_YOU_SURE);
         builder.setPositiveButton(YES, new DialogInterface.OnClickListener() {
             @Override

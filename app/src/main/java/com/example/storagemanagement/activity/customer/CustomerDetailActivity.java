@@ -61,7 +61,7 @@ public class CustomerDetailActivity extends AppCompatActivity {
     private void showPopup(int id) {
         AlertDialog.Builder builder = new AlertDialog.Builder(CustomerDetailActivity.this);
         final boolean isDeleted = customerDao.removeById(id);
-        builder.setTitle(DELETE_PRODUCT);
+        builder.setTitle(DELETE + CUSTOMER);
         builder.setMessage(ARE_YOU_SURE);
         builder.setPositiveButton(YES, new DialogInterface.OnClickListener() {
             @Override
