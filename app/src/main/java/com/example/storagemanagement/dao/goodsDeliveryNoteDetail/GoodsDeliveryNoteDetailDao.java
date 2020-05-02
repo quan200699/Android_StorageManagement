@@ -74,7 +74,7 @@ public class GoodsDeliveryNoteDetailDao implements IGoodsDeliveryNoteDetailDao {
         SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
         StringBuilder query = new StringBuilder(SELECT_ALL_ATTRIBUTE);
         query.append(TABLE_GOODS_DELIVERY_NOTE_DETAIL).append(" ").append(WHERE).append(" ").append(GOODS_DELIVERY_NOTE_ID)
-                .append("=").append(goodsDeliveryNoteId);
+                .append("=").append("\'").append(goodsDeliveryNoteId).append("\'");
         Cursor cursor = sqLiteDatabase.rawQuery(query.toString(), null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
