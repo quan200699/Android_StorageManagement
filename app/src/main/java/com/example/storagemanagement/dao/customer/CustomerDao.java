@@ -97,4 +97,24 @@ public class CustomerDao implements ICustomerDao {
         int result = sqLiteDatabase.update(TABLE_CUSTOMER, contentValues, whereClause.toString(), arguments);
         return result != 0;
     }
+
+    @Override
+    public Customer findByName(String name) {
+        Customer customer = new Customer();
+        SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
+        StringBuilder query = new StringBuilder(SELECT_ALL_ATTRIBUTE);
+        query.append(TABLE_CUSTOMER).append(" ").append(WHERE).append(" ").append(NAME).append("=").append("'").append(name).append("'");
+        Cursor cursor = sqLiteDatabase.rawQuery(String.valueOf(query), null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            int id = cursor.getInt(cursor.getColumnIndex(ID));
+            String customerId = cursor.getString(cursor.getColumnIndex(CUSTOMER_ID));
+            String address = cursor.getString(cursor.getColumnIndex(ADDRESS));
+            String phoneNumber = cursor.getString(cursor.getColumnIndex(PHONE_NUMBER));
+            customer = new Customer(id, customerId, name, address, phoneNumber);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return customer;
+    }
 }

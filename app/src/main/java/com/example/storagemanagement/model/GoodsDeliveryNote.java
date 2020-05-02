@@ -24,4 +24,12 @@ public class GoodsDeliveryNote {
         this.employeeId = employeeId;
         this.notice = notice;
     }
+
+    public GoodsDeliveryNote(String goodsDeliveryNoteId, String date, String notice) {
+        this.goodsDeliveryNoteId = goodsDeliveryNoteId;
+        this.date = date;
+        this.notice = notice;
+    }
+
+
 }

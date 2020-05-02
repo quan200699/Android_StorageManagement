@@ -93,4 +93,23 @@ public class WarehouseDao implements IWarehouseDao {
         int result = sqLiteDatabase.update(TABLE_WAREHOUSE, contentValues, whereClause.toString(), arguments);
         return result != 0;
     }
+
+    @Override
+    public Warehouse findByName(String name) {
+        Warehouse warehouse = new Warehouse();
+        SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
+        StringBuilder query = new StringBuilder(SELECT_ALL_ATTRIBUTE);
+        query.append(TABLE_WAREHOUSE).append(" ").append(WHERE).append(" ").append(NAME).append("=").append("'").append(name).append("'");
+        Cursor cursor = sqLiteDatabase.rawQuery(String.valueOf(query), null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            int id = cursor.getInt(cursor.getColumnIndex(ID));
+            String warehouseId = cursor.getString(cursor.getColumnIndex(WAREHOUSE_ID));
+            String address = cursor.getString(cursor.getColumnIndex(ADDRESS));
+            warehouse = new Warehouse(id, warehouseId, name, address);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return warehouse;
+    }
 }
