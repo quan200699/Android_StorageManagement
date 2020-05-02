@@ -8,8 +8,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class GoodsDeliveryNoteDetail {
+    private int id;
     private String goodsDeliveryNoteId;
     private String productId;
     private int quantity;
     private double price;
+
+    public GoodsDeliveryNoteDetail(String goodsDeliveryNoteId, String productId, int quantity, double price) {
+        this.goodsDeliveryNoteId = goodsDeliveryNoteId;
+        this.productId = productId;
+        this.quantity = quantity;
+        this.price = price;
+    }
 }
