@@ -14,6 +14,8 @@ import com.example.storagemanagement.R;
 import com.example.storagemanagement.dao.goodsDeliveryNoteDetail.GoodsDeliveryNoteDetailDao;
 import com.example.storagemanagement.dao.goodsDeliveryNoteDetail.IGoodsDeliveryNoteDetailDao;
 
+import static com.example.storagemanagement.config.StaticVariable.*;
+
 public class AddGoodsDeliveryNoteDetailActivity extends AppCompatActivity {
     private EditText editTextGoodsDeliveryNoteId;
     private EditText editTextQuantity;
@@ -29,6 +31,12 @@ public class AddGoodsDeliveryNoteDetailActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         init();
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            String goodsDeliveryNoteId = bundle.getString(GOODS_DELIVERY_NOTE_ID);
+            editTextGoodsDeliveryNoteId.setText(goodsDeliveryNoteId);
+
+        }
     }
 
     private void init() {

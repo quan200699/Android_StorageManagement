@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -34,10 +35,18 @@ public class GoodsDeliveryNoteDetailActivity extends AppCompatActivity {
         init();
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
-            String goodsDeliveryNoteId = bundle.getString(GOODS_DELIVERY_NOTE_ID);
+            final String goodsDeliveryNoteId = bundle.getString(GOODS_DELIVERY_NOTE_ID);
             List<GoodsDeliveryNoteDetail> goodsDeliveryNoteDetails = goodsDeliveryNoteDetailDao.findAllByGoodsDeliveryNoteId(goodsDeliveryNoteId);
             GoodsDeliveryNoteDetailAdapter goodsDeliveryNoteDetailAdapter = new GoodsDeliveryNoteDetailAdapter(GoodsDeliveryNoteDetailActivity.this, goodsDeliveryNoteDetails);
             listViewGoodsDeliveryNote.setAdapter(goodsDeliveryNoteDetailAdapter);
+            buttonAdd.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(GoodsDeliveryNoteDetailActivity.this, AddGoodsDeliveryNoteDetailActivity.class);
+                    intent.putExtra(GOODS_DELIVERY_NOTE_ID, goodsDeliveryNoteId);
+                    startActivity(intent);
+                }
+            });
         }
     }
 
