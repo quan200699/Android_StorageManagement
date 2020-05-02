@@ -16,6 +16,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.storagemanagement.R;
+import com.example.storagemanagement.activity.goodsDeliveryNoteDetail.GoodsDeliveryNoteDetailActivity;
 import com.example.storagemanagement.dao.customer.CustomerDao;
 import com.example.storagemanagement.dao.customer.ICustomerDao;
 import com.example.storagemanagement.dao.goodsDeliveryNote.GoodsDeliveryNoteDao;
@@ -79,6 +80,14 @@ public class InfoGoodsDeliveryNoteActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     showPopup(goodsDeliveryNoteFromBundle.getId());
+                }
+            });
+            buttonGoodsDeliveryNoteDetail.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(InfoGoodsDeliveryNoteActivity.this, GoodsDeliveryNoteDetailActivity.class);
+                    intent.putExtra(GOODS_DELIVERY_NOTE_ID, goodsDeliveryNoteFromBundle.getGoodsDeliveryNoteId());
+                    startActivity(intent);
                 }
             });
         }

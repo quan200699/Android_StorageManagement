@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.goodsDeliveryNoteDetail.GoodsDeliveryNoteDetailActivity"></activity>
+        <activity
+            android:name=".activity.goodsDeliveryNoteDetail.GoodsDeliveryNoteDetailActivity"
+            android:label="@string/list_goods_delivery_note_detail" />
         <activity
             android:name=".activity.goodsDeliveryNote.InfoGoodsDeliveryNoteActivity"
             android:label="@string/info_goods_delivery_note" />
