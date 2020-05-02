@@ -6,10 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.storagemanagement.R;
 import com.example.storagemanagement.dao.goodsDeliveryNoteDetail.GoodsDeliveryNoteDetailDao;
@@ -49,9 +51,34 @@ public class InfoGoodsDeliveryNoteDetailActivity extends AppCompatActivity {
         spinnerProduct.setAdapter(adapter);
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
-            GoodsDeliveryNoteDetail goodsDeliveryNoteDetailFromBundle = getGoodsDeliveryNoteDetailFromBundle(bundle);
+            final GoodsDeliveryNoteDetail goodsDeliveryNoteDetailFromBundle = getGoodsDeliveryNoteDetailFromBundle(bundle);
             setDefaultValueForLayout(goodsDeliveryNoteDetailFromBundle);
+            buttonEdit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    GoodsDeliveryNoteDetail goodsDeliveryNoteDetail = getGoodsDeliveryNoteDetailFromLayout();
+                    goodsDeliveryNoteDetail.setId(goodsDeliveryNoteDetailFromBundle.getId());
+                    boolean isUpdated = goodsDeliveryNoteDetailDao.updateById(goodsDeliveryNoteDetailFromBundle.getId(), goodsDeliveryNoteDetail);
+                    showMessage(isUpdated, MESSAGE_UPDATE_SUCCESS);
+                }
+            });
         }
+    }
+
+    private void showMessage(boolean isSuccess, String message) {
+        if (isSuccess) {
+            Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getApplicationContext(), MESSAGE_FAIL, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private GoodsDeliveryNoteDetail getGoodsDeliveryNoteDetailFromLayout() {
+        String goodsDeliveryNoteId = editTextGoodsDeliveryNoteId.getText().toString();
+        String productId = spinnerProduct.getSelectedItem().toString();
+        int quantity = Integer.parseInt(editTextQuantity.getText().toString());
+        double price = Double.parseDouble(editTextPrice.getText().toString());
+        return new GoodsDeliveryNoteDetail(goodsDeliveryNoteId, productId, quantity, price);
     }
 
     private void setDefaultValueForLayout(GoodsDeliveryNoteDetail goodsDeliveryNoteDetail) {
