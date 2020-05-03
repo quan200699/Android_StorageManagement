@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.goodsReceivedNote.AddGoodsReceivedNoteActivity"></activity>
+        <activity
+            android:name=".activity.goodsReceivedNote.AddGoodsReceivedNoteActivity"
+            android:label="@string/create_goods_received_note" />
         <activity
             android:name=".activity.goodsReceivedNote.GoodsReceivedNoteActivity"
             android:label="@string/list_goods_received_note" />
