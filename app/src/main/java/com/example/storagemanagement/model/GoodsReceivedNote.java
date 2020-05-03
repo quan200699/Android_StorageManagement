@@ -37,4 +37,12 @@ public class GoodsReceivedNote {
         this.date = date;
         this.notice = notice;
     }
+
+    public GoodsReceivedNote(int id, String goodsReceivedNoteId, String date, String warehouseId, String notice) {
+        this.id = id;
+        this.goodsReceivedNoteId = goodsReceivedNoteId;
+        this.date = date;
+        this.warehouseId = warehouseId;
+        this.notice = notice;
+    }
 }
