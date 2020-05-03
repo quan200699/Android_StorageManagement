@@ -43,11 +43,22 @@
         android:id="@+id/buttonGoodsDeliveryNote"
         android:layout_width="200dp"
         android:layout_height="65dp"
-        android:layout_marginBottom="96dp"
+        android:layout_marginBottom="48dp"
         android:text="@string/list_goods_delivery_note"
+        app:layout_constraintBottom_toTopOf="@+id/buttonGoodsReceivedNote"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonGoodsReceivedNote"
+        android:layout_width="200dp"
+        android:layout_height="65dp"
+        android:layout_marginBottom="48dp"
+        android:text="@string/list_goods_received_note"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
