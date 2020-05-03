@@ -39,5 +39,8 @@
     <string name="create_goods_received_note">TẠO MỚI PHIẾU NHẬP</string>
     <string name="info_goods_received_note">THÔNG TIN PHIẾU NHẬP</string>
     <string name="goods_received_note_id">Mã phiếu nhập</string>
-
+    <string name="list_goods_received_note_detail">DANH SÁCH CHI TIẾT PHIẾU NHẬP</string>
+    <string name="create_goods_received_note_detail">TẠO MỚI CHI TIẾT PHIẾU NHẬP</string>
+    <string name="info_goods_received_note_detail">THÔNG TIN CHI TIẾT PHIẾU NHẬP</string>
+    <string name="goods_received_note_detail">Chi tiết phiếu nhập</string>
 </resources>
