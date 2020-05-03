@@ -40,7 +40,7 @@ public class GoodsReceivedNoteAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
             LayoutInflater layoutInflater = LayoutInflater.from(context);
-            convertView = layoutInflater.inflate(R.layout.goods_delivery_note_row_layout, null);
+            convertView = layoutInflater.inflate(R.layout.goods_received_note_row_layout, null);
         }
         GoodsReceivedNote goodsReceivedNote = (GoodsReceivedNote) getItem(position);
         if (goodsReceivedNote != null) {
