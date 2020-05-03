@@ -35,4 +35,9 @@
     <string name="quantity">Số lượng</string>
     <string name="price">Giá</string>
     <string name="goods_delivery_note_detail">Chi tiết phiếu xuất</string>
+    <string name="list_goods_received_note">DANH SÁCH PHIẾU NHẬP</string>
+    <string name="create_goods_received_note">TẠO MỚI PHIẾU NHẬP</string>
+    <string name="info_goods_received_note">THÔNG TIN PHIẾU NHẬP</string>
+    <string name="goods_received_note_id">Mã phiếu nhập</string>
+
 </resources>
