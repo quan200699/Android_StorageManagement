@@ -6,10 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.storagemanagement.R;
 import com.example.storagemanagement.dao.goodsReceivedNote.GoodsReceivedNoteDao;
@@ -25,16 +27,16 @@ import java.util.List;
 import static com.example.storagemanagement.config.StaticVariable.*;
 
 public class InfoGoodsReceivedNoteActivity extends AppCompatActivity {
-    private EditText editTextGoodsDeliveryNoteId;
+    private EditText editTextGoodsReceivedNoteId;
     private EditText editTextDate;
     private EditText editTextNotice;
-    private Spinner spinnerCustomer;
+    private Spinner spinnerSupplier;
     private Spinner spinnerWarehouse;
     private Spinner spinnerEmployee;
     private Button buttonEdit;
     private Button buttonDelete;
-    private Button buttonGoodsDeliveryNoteDetail;
-    private IGoodsReceivedNoteDao goodsDeliveryNoteDao;
+    private Button buttonGoodsReceivedNoteDetail;
+    private IGoodsReceivedNoteDao goodsReceivedNoteDao;
     private IWarehouseDao warehouseDao;
     private List<Warehouse> warehouses;
 
@@ -51,13 +53,43 @@ public class InfoGoodsReceivedNoteActivity extends AppCompatActivity {
         spinnerWarehouse.setAdapter(adapterWarehouse);
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
-            GoodsReceivedNote goodsReceivedNoteFromBundle = getGoodsReceivedNoteFromBundle(bundle);
+            final GoodsReceivedNote goodsReceivedNoteFromBundle = getGoodsReceivedNoteFromBundle(bundle);
             setDefaultValueForLayout(goodsReceivedNoteFromBundle);
+            buttonEdit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    GoodsReceivedNote goodsReceivedNote = getGoodsReceivedNoteFromLayout();
+                    goodsReceivedNote.setId(goodsReceivedNoteFromBundle.getId());
+                    boolean isUpdated = goodsReceivedNoteDao.updateById(goodsReceivedNote.getId(), goodsReceivedNote);
+                    showMessage(isUpdated, MESSAGE_UPDATE_SUCCESS);
+                }
+            });
         }
     }
 
+    private void showMessage(boolean isSuccess, String message) {
+        if (isSuccess) {
+            Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getApplicationContext(), MESSAGE_FAIL, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private GoodsReceivedNote getGoodsReceivedNoteFromLayout() {
+        String goodsReceivedNoteId = editTextGoodsReceivedNoteId.getText().toString();
+        String date = editTextDate.getText().toString();
+        String notice = editTextNotice.getText().toString();
+        String warehouseName = spinnerWarehouse.getSelectedItem().toString();
+        GoodsReceivedNote goodsReceivedNote = new GoodsReceivedNote(goodsReceivedNoteId, date, notice);
+        Warehouse warehouse = warehouseDao.findByName(warehouseName);
+        if (warehouse != null) {
+            goodsReceivedNote.setWarehouseId(warehouse.getWarehouseId());
+        }
+        return goodsReceivedNote;
+    }
+
     private void setDefaultValueForLayout(GoodsReceivedNote goodsReceivedNoteFromBundle) {
-        editTextGoodsDeliveryNoteId.setText(goodsReceivedNoteFromBundle.getGoodsReceivedNoteId());
+        editTextGoodsReceivedNoteId.setText(goodsReceivedNoteFromBundle.getGoodsReceivedNoteId());
         editTextDate.setText(goodsReceivedNoteFromBundle.getDate());
         editTextNotice.setText(goodsReceivedNoteFromBundle.getNotice());
         spinnerWarehouse.setSelection(getDefaultWarehouseSpinnerPosition(warehouses, goodsReceivedNoteFromBundle.getWarehouseId()));
@@ -100,16 +132,16 @@ public class InfoGoodsReceivedNoteActivity extends AppCompatActivity {
 
 
     private void init() {
-        editTextGoodsDeliveryNoteId = findViewById(R.id.editTextGoodsReceivedNoteId);
+        editTextGoodsReceivedNoteId = findViewById(R.id.editTextGoodsReceivedNoteId);
         editTextDate = findViewById(R.id.editTextDate);
         editTextNotice = findViewById(R.id.editTextNotice);
-        spinnerCustomer = findViewById(R.id.spinnerSupplier);
+        spinnerSupplier = findViewById(R.id.spinnerSupplier);
         spinnerWarehouse = findViewById(R.id.spinnerWarehouse);
         spinnerEmployee = findViewById(R.id.spinnerEmployee);
         buttonDelete = findViewById(R.id.buttonDelete);
         buttonEdit = findViewById(R.id.buttonEdit);
-        buttonGoodsDeliveryNoteDetail = findViewById(R.id.buttonGoodsReceivedNote);
-        goodsDeliveryNoteDao = new GoodsReceivedNoteDao(this);
+        buttonGoodsReceivedNoteDetail = findViewById(R.id.buttonGoodsReceivedNote);
+        goodsReceivedNoteDao = new GoodsReceivedNoteDao(this);
         warehouseDao = new WarehouseDao(this);
     }
 
