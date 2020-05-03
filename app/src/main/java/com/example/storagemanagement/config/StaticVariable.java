@@ -50,6 +50,8 @@ public class StaticVariable {
     public static final String WAREHOUSE = "kho hàng";
     public static final String GOODS_DELIVERY_NOTE = "phiếu xuất kho";
     public static final String GOODS_DELIVERY_NOTE_DETAIL = "chi tiết phiếu xuất kho";
+    public static final String GOODS_RECEIVED_NOTE = "phiếu nhập kho";
+    public static final String GOODS_RECEIVED_NOTE_DETAIL = "chi tiết phiếu nhập kho";
     public static final String YES = "Yes";
     public static final String NO = "No";
     public static final String CANCEL = "Cancel";
