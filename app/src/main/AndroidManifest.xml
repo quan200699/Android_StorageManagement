@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".activity.goodsReceivedNoteDetail.GoodsReceivedNoteDetailActivity"
+            android:label="@string/list_goods_received_note_detail" />
+        <activity
             android:name=".activity.goodsReceivedNote.InfoGoodsReceivedNoteActivity"
             android:label="@string/info_goods_received_note" />
         <activity
