@@ -6,10 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.storagemanagement.R;
 import com.example.storagemanagement.dao.goodsReceivedNoteDetail.GoodsReceivedNoteDetailDao;
@@ -50,7 +52,32 @@ public class InfoGoodsReceivedNoteDetailActivity extends AppCompatActivity {
         if (bundle != null) {
             final GoodsReceivedNoteDetail goodsReceivedNoteDetailFromBundle = getGoodsReceivedNoteDetailFromBundle(bundle);
             setDefaultValueForLayout(goodsReceivedNoteDetailFromBundle);
+            buttonEdit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    GoodsReceivedNoteDetail goodsReceivedNoteDetail = getGoodsReceivedNoteDetailFromLayout();
+                    goodsReceivedNoteDetail.setId(goodsReceivedNoteDetailFromBundle.getId());
+                    boolean isUpdated = goodsReceivedNoteDetailDao.updateById(goodsReceivedNoteDetailFromBundle.getId(), goodsReceivedNoteDetail);
+                    showMessage(isUpdated, MESSAGE_UPDATE_SUCCESS);
+                }
+            });
         }
+    }
+
+    private void showMessage(boolean isSuccess, String message) {
+        if (isSuccess) {
+            Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getApplicationContext(), MESSAGE_FAIL, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private GoodsReceivedNoteDetail getGoodsReceivedNoteDetailFromLayout() {
+        String goodsReceivedNoteId = editTextGoodsReceivedNoteId.getText().toString();
+        String productId = spinnerProduct.getSelectedItem().toString();
+        int quantity = Integer.parseInt(editTextQuantity.getText().toString());
+        double price = Double.parseDouble(editTextPrice.getText().toString());
+        return new GoodsReceivedNoteDetail(goodsReceivedNoteId, productId, quantity, price);
     }
 
     private void setDefaultValueForLayout(GoodsReceivedNoteDetail goodsReceivedNoteDetail) {
