@@ -16,6 +16,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.storagemanagement.R;
+import com.example.storagemanagement.activity.goodsReceivedNoteDetail.GoodsReceivedNoteDetailActivity;
 import com.example.storagemanagement.dao.goodsReceivedNote.GoodsReceivedNoteDao;
 import com.example.storagemanagement.dao.goodsReceivedNote.IGoodsReceivedNoteDao;
 import com.example.storagemanagement.dao.warehouse.IWarehouseDao;
@@ -70,6 +71,14 @@ public class InfoGoodsReceivedNoteActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     showPopup(goodsReceivedNoteFromBundle.getId());
+                }
+            });
+            buttonGoodsReceivedNoteDetail.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(InfoGoodsReceivedNoteActivity.this, GoodsReceivedNoteDetailActivity.class);
+                    intent.putExtra(GOODS_RECEIVED_NOTE_ID, goodsReceivedNoteFromBundle.getGoodsReceivedNoteId());
+                    startActivity(intent);
                 }
             });
         }
@@ -171,7 +180,7 @@ public class InfoGoodsReceivedNoteActivity extends AppCompatActivity {
         spinnerEmployee = findViewById(R.id.spinnerEmployee);
         buttonDelete = findViewById(R.id.buttonDelete);
         buttonEdit = findViewById(R.id.buttonEdit);
-        buttonGoodsReceivedNoteDetail = findViewById(R.id.buttonGoodsReceivedNote);
+        buttonGoodsReceivedNoteDetail = findViewById(R.id.buttonGoodsReceivedNoteDetail);
         goodsReceivedNoteDao = new GoodsReceivedNoteDao(this);
         warehouseDao = new WarehouseDao(this);
     }
