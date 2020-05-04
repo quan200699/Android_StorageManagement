@@ -11,13 +11,20 @@ import android.widget.ListView;
 
 import com.example.storagemanagement.R;
 import com.example.storagemanagement.activity.goodsReceivedNote.InfoGoodsReceivedNoteActivity;
+import com.example.storagemanagement.adapter.GoodsReceivedNoteDetailAdapter;
 import com.example.storagemanagement.dao.goodsReceivedNoteDetail.GoodsReceivedNoteDetailDao;
 import com.example.storagemanagement.dao.goodsReceivedNoteDetail.IGoodsReceivedNoteDetailDao;
+import com.example.storagemanagement.model.GoodsReceivedNoteDetail;
+
+import java.util.List;
+
+import static com.example.storagemanagement.config.StaticVariable.*;
 
 public class GoodsReceivedNoteDetailActivity extends AppCompatActivity {
-    private ListView listViewGoodsDeliveryNote;
+    private ListView listViewGoodsReceivedNote;
     private Button buttonAdd;
     private IGoodsReceivedNoteDetailDao goodsReceivedNoteDetailDao;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,10 +33,16 @@ public class GoodsReceivedNoteDetailActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         init();
         Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            final String goodsReceivedNoteId = bundle.getString(GOODS_RECEIVED_NOTE_ID);
+            final List<GoodsReceivedNoteDetail> goodsDeliveryNoteDetails = goodsReceivedNoteDetailDao.findAllByGoodsReceivedNoteId(goodsReceivedNoteId);
+            GoodsReceivedNoteDetailAdapter goodsReceivedNoteDetailAdapter = new GoodsReceivedNoteDetailAdapter(GoodsReceivedNoteDetailActivity.this, goodsDeliveryNoteDetails);
+            listViewGoodsReceivedNote.setAdapter(goodsReceivedNoteDetailAdapter);
+        }
     }
 
     private void init() {
-        listViewGoodsDeliveryNote = findViewById(R.id.listViewGoodsDeliveryNoteDetail);
+        listViewGoodsReceivedNote = findViewById(R.id.listViewGoodsReceivedNoteDetail);
         buttonAdd = findViewById(R.id.buttonAdd);
         goodsReceivedNoteDetailDao = new GoodsReceivedNoteDetailDao(this);
     }
