@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -38,6 +39,14 @@ public class GoodsReceivedNoteDetailActivity extends AppCompatActivity {
             final List<GoodsReceivedNoteDetail> goodsDeliveryNoteDetails = goodsReceivedNoteDetailDao.findAllByGoodsReceivedNoteId(goodsReceivedNoteId);
             GoodsReceivedNoteDetailAdapter goodsReceivedNoteDetailAdapter = new GoodsReceivedNoteDetailAdapter(GoodsReceivedNoteDetailActivity.this, goodsDeliveryNoteDetails);
             listViewGoodsReceivedNote.setAdapter(goodsReceivedNoteDetailAdapter);
+            buttonAdd.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(GoodsReceivedNoteDetailActivity.this, AddGoodsReceivedNoteDetailActivity.class);
+                    intent.putExtra(GOODS_RECEIVED_NOTE_ID, goodsReceivedNoteId);
+                    startActivity(intent);
+                }
+            });
         }
     }
 
