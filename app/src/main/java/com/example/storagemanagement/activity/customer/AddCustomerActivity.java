@@ -72,7 +72,7 @@ public class AddCustomerActivity extends AppCompatActivity {
         editTextCustomerName = findViewById(R.id.editTextCustomerName);
         editTextCustomerAddress = findViewById(R.id.editTextCustomerAddress);
         editTextPhoneNumber = findViewById(R.id.editTextPhoneNumber);
-        buttonSave = findViewById(R.id.buttonSave);
+        buttonSave = findViewById(R.id.buttonEdit);
         customerDao = new CustomerDao(this);
     }
 

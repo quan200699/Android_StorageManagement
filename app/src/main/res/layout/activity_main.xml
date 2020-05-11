@@ -10,18 +10,18 @@
         android:id="@+id/buttonProduct"
         android:layout_width="200dp"
         android:layout_height="65dp"
-        android:layout_marginBottom="56dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/list_product"
         app:layout_constraintBottom_toTopOf="@+id/buttonCustomer"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/buttonCustomer"
         android:layout_width="200dp"
         android:layout_height="65dp"
-        android:layout_marginBottom="72dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/list_customer"
         app:layout_constraintBottom_toTopOf="@+id/buttonWarehouse"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,7 +32,7 @@
         android:id="@+id/buttonWarehouse"
         android:layout_width="200dp"
         android:layout_height="65dp"
-        android:layout_marginBottom="48dp"
+        android:layout_marginBottom="24dp"
         android:text="@string/list_warehouse"
         app:layout_constraintBottom_toTopOf="@+id/buttonGoodsDeliveryNote"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,11 +43,11 @@
         android:id="@+id/buttonGoodsDeliveryNote"
         android:layout_width="200dp"
         android:layout_height="65dp"
-        android:layout_marginBottom="96dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/list_goods_delivery_note"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/buttonSupplier"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -62,6 +62,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.571" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonSupplier"
+        android:layout_width="200dp"
+        android:layout_height="65dp"
+        android:layout_marginBottom="108dp"
+        android:text="@string/list_supplier"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,7 +7,7 @@
     tools:context=".activity.product.AddProductActivity">
 
     <Button
-    android:id="@+id/buttonSave"
+    android:id="@+id/buttonEdit"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginEnd="148dp"
@@ -65,7 +65,7 @@
         android:layout_marginBottom="64dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/buttonSave"
+        app:layout_constraintBottom_toTopOf="@+id/buttonEdit"
         app:layout_constraintStart_toEndOf="@+id/textView6"
         tools:ignore="RtlHardcoded" />
 

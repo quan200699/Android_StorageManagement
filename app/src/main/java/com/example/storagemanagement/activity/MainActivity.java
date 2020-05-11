@@ -11,6 +11,7 @@ import com.example.storagemanagement.R;
 import com.example.storagemanagement.activity.customer.CustomerActivity;
 import com.example.storagemanagement.activity.goodsDeliveryNote.GoodsDeliveryNoteActivity;
 import com.example.storagemanagement.activity.product.ProductActivity;
+import com.example.storagemanagement.activity.supplier.SupplierActivity;
 import com.example.storagemanagement.activity.warehouse.WarehouseActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private Button buttonCustomer;
     private Button buttonWarehouse;
     private Button buttonGoodsDeliveryNote;
+    private Button buttonSupplier;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         onClickEvent(buttonCustomer, CustomerActivity.class);
         onClickEvent(buttonWarehouse, WarehouseActivity.class);
         onClickEvent(buttonGoodsDeliveryNote, GoodsDeliveryNoteActivity.class);
+        onClickEvent(buttonSupplier, SupplierActivity.class);
     }
 
     private void onClickEvent(Button button, final Class<?> activity) {
@@ -45,5 +48,6 @@ public class MainActivity extends AppCompatActivity {
         buttonCustomer = findViewById(R.id.buttonCustomer);
         buttonWarehouse = findViewById(R.id.buttonWarehouse);
         buttonGoodsDeliveryNote = findViewById(R.id.buttonGoodsDeliveryNote);
+        buttonSupplier = findViewById(R.id.buttonSupplier);
     }
 }

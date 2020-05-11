@@ -12,7 +12,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.storagemanagement.R;
-import com.example.storagemanagement.activity.MainActivity;
 import com.example.storagemanagement.dao.warehouse.IWarehouseDao;
 import com.example.storagemanagement.dao.warehouse.WarehouseDao;
 import com.example.storagemanagement.model.Warehouse;
@@ -69,7 +68,7 @@ public class AddWarehouseActivity extends AppCompatActivity {
         editTextWarehouseId = findViewById(R.id.editTextWarehouseId);
         editTextWarehouseName = findViewById(R.id.editTextWarehouseName);
         editTextWarehouseAddress = findViewById(R.id.editTextWarehouseAddress);
-        buttonSave = findViewById(R.id.buttonSave);
+        buttonSave = findViewById(R.id.buttonEdit);
         warehouseDao = new WarehouseDao(this);
     }
 

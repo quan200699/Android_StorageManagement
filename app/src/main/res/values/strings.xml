@@ -7,6 +7,7 @@
     <string name="list_product">DANH SÁCH SẢN PHẨM</string>
     <string name="create_product">TẠO MỚI SẢN PHẨM</string>
     <string name="info_product">THÔNG TIN SẢN PHẨM</string>
+    <string name="list_supplier">DANH SÁCH NHÀ CUNG CẤP</string>
     <string name="product_id">Mã sản phẩm</string>
     <string name="product_name">Tên sản phẩm</string>
     <string name="product_description">Mô tả</string>
@@ -29,4 +30,11 @@
     <string name="goods_delivery_note_id">Mã phiếu xuất</string>
     <string name="date">Ngày tháng</string>
     <string name="notice">Ghi chú</string>
+    <string name="supplier_id">Mã nhà cung cấp</string>
+    <string name="supplier_name">Tên nhà cung cấp</string>
+    <string name="supplier_address">Địa chỉ nhà cung cấp</string>
+    <string name="supplier_email">Email nhà cung cấp</string>
+    <string name="add_supplier">THÊM MỚI NHÀ CUNG CẤP</string>
+    <string name="info_supplier">THÔNG TIN NHÀ CUNG CẤP</string>
+
 </resources>

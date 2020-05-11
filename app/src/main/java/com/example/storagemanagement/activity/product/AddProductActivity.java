@@ -73,7 +73,7 @@ public class AddProductActivity extends AppCompatActivity {
         editTextProductName = findViewById(R.id.editTextProductName);
         editTextProductGuarantee = findViewById(R.id.editTextGuarantee);
         editTextProductDescription = findViewById(R.id.editTextProductDescription);
-        buttonSave = findViewById(R.id.buttonSave);
+        buttonSave = findViewById(R.id.buttonEdit);
         productDao = new ProductDao(this);
     }
 

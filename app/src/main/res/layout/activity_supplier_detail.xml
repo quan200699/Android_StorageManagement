@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="@string/supplier_address"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editTextSupplierAddress"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="Mã nhà cung cấp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editTextSupplierId"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="Tên nhà cung cấp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editTextSupplierName"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="@string/supplier_email"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editTextSupplierEmail"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextSupplierId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginBottom="24dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/editTextSupplierName"
+        app:layout_constraintStart_toEndOf="@+id/textView11" />
+
+    <EditText
+        android:id="@+id/editTextSupplierName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginBottom="28dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/editTextSupplierAddress"
+        app:layout_constraintStart_toEndOf="@+id/textView12" />
+
+    <EditText
+        android:id="@+id/editTextSupplierAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginBottom="40dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/editTextSupplierEmail"
+        app:layout_constraintStart_toEndOf="@+id/textView13" />
+
+    <Button
+        android:id="@+id/buttonEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="80dp"
+        android:layout_marginRight="80dp"
+        android:layout_marginBottom="144dp"
+        android:text="@string/edit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonDelete" />
+
+    <Button
+        android:id="@+id/buttonDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="88dp"
+        android:layout_marginRight="88dp"
+        android:layout_marginBottom="144dp"
+        android:text="Xóa"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextSupplierEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginBottom="72dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/buttonDelete"
+        app:layout_constraintStart_toEndOf="@+id/textView14" />
+</androidx.constraintlayout.widget.ConstraintLayout>

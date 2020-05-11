@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".activity.supplier.SupplierActivity"
+            android:label="@string/list_supplier"/>
+        <activity
+            android:name=".activity.supplier.AddSupplierActivity"
+            android:label="@string/add_supplier"/>
+        <activity
+            android:name=".activity.supplier.SupplierDetailActivity"
+            android:label="@string/info_supplier"/>
+        <activity
             android:name=".activity.goodsDeliveryNote.GoodsDeliveryNoteDetailActivity"
             android:label="@string/info_goods_delivery_note" />
         <activity

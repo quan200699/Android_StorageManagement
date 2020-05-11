@@ -134,7 +134,7 @@ public class AddGoodsDeliveryNoteActivity extends AppCompatActivity {
         spinnerCustomer = findViewById(R.id.spinnerCustomer);
         spinnerWarehouse = findViewById(R.id.spinnerWarehouse);
         spinnerEmployee = findViewById(R.id.spinnerEmployee);
-        buttonSave = findViewById(R.id.buttonSave);
+        buttonSave = findViewById(R.id.buttonEdit);
         goodsDeliveryNoteDao = new GoodsDeliveryNoteDao(this);
         customerDao = new CustomerDao(this);
         warehouseDao = new WarehouseDao(this);
