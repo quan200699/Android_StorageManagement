@@ -47,7 +47,7 @@ public class GoodsDeliveryNoteActivity extends AppCompatActivity {
         listViewGoodsDeliveryNote.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(GoodsDeliveryNoteActivity.this, GoodsDeliveryNoteDetailActivity.class);
+                Intent intent = new Intent(GoodsDeliveryNoteActivity.this, InfoGoodsDeliveryNoteActivity.class);
                 intent.putExtra(ID, goodsDeliveryNotes.get(position).getId());
                 intent.putExtra(GOODS_DELIVERY_NOTE_ID, goodsDeliveryNotes.get(position).getGoodsDeliveryNoteId());
                 intent.putExtra(DATE, goodsDeliveryNotes.get(position).getDate());

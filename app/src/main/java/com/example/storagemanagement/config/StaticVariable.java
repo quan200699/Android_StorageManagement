@@ -49,6 +49,9 @@ public class StaticVariable {
     public static final String CUSTOMER = "khách hàng";
     public static final String WAREHOUSE = "kho hàng";
     public static final String GOODS_DELIVERY_NOTE = "phiếu xuất kho";
+    public static final String GOODS_DELIVERY_NOTE_DETAIL = "chi tiết phiếu xuất kho";
+    public static final String GOODS_RECEIVED_NOTE = "phiếu nhập kho";
+    public static final String GOODS_RECEIVED_NOTE_DETAIL = "chi tiết phiếu nhập kho";
     public static final String YES = "Yes";
     public static final String NO = "No";
     public static final String CANCEL = "Cancel";
@@ -83,13 +86,13 @@ public class StaticVariable {
             + DATE + " VARCHAR(225) ," + CUSTOMER_ID + " VARCHAR(225) ," + WAREHOUSE_ID + " VARCHAR(225) ,"
             + EMPLOYEE_ID + " VARCHAR(225) ," + NOTICE + " VARCHAR(225));";
     public static final String CREATE_TABLE_GOODS_DELIVERY_NOTE_DETAIL = "CREATE TABLE " + TABLE_GOODS_DELIVERY_NOTE_DETAIL +
-            " (" + GOODS_DELIVERY_NOTE_ID + " VARCHAR(255) ,"
+            " (" + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + GOODS_DELIVERY_NOTE_ID + " VARCHAR(255) ,"
             + PRODUCT_ID + " VARCHAR(225) ," + QUANTITY + " INTEGER ," + PRICE + " REAL);";
     public static final String CREATE_TABLE_GOODS_RECEIVED_NOTE = "CREATE TABLE " + TABLE_GOODS_RECEIVED_NOTE +
             " (" + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + GOODS_RECEIVED_NOTE_ID + " VARCHAR(255) ,"
             + DATE + " VARCHAR(225) ," + SUPPLIER_ID + " VARCHAR(225) ," + WAREHOUSE_ID + " VARCHAR(225) ,"
             + EMPLOYEE_ID + " VARCHAR(225) ," + NOTICE + " VARCHAR(225));";
-    public static final String CREATE_TABLE_GOODS_RECEIVED_NOTE_DETAIL = "CREATE TABLE " + TABLE_GOODS_DELIVERY_NOTE_DETAIL +
-            " (" + GOODS_RECEIVED_NOTE_ID + " VARCHAR(255) ,"
+    public static final String CREATE_TABLE_GOODS_RECEIVED_NOTE_DETAIL = "CREATE TABLE " + TABLE_GOODS_RECEIVED_NOTE_DETAIL +
+            " (" + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + GOODS_RECEIVED_NOTE_ID + " VARCHAR(255) ,"
             + PRODUCT_ID + " VARCHAR(225) ," + QUANTITY + " INTEGER ," + PRICE + " REAL);";
 }

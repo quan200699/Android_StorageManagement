@@ -9,6 +9,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".activity.goodsReceivedNoteDetail.InfoGoodsReceivedNoteDetailActivity"
+            android:label="@string/info_goods_received_note_detail"/>
+        <activity
+            android:name=".activity.goodsReceivedNoteDetail.AddGoodsReceivedNoteDetailActivity"
+            android:label="@string/create_goods_received_note_detail" />
+        <activity
+            android:name=".activity.goodsReceivedNoteDetail.GoodsReceivedNoteDetailActivity"
+            android:label="@string/list_goods_received_note_detail" />
+        <activity
+            android:name=".activity.goodsReceivedNote.InfoGoodsReceivedNoteActivity"
+            android:label="@string/info_goods_received_note" />
+        <activity
+            android:name=".activity.goodsReceivedNote.AddGoodsReceivedNoteActivity"
+            android:label="@string/create_goods_received_note" />
+        <activity
+            android:name=".activity.goodsReceivedNote.GoodsReceivedNoteActivity"
+            android:label="@string/list_goods_received_note" />
+        <activity
+            android:name=".activity.goodsDeliveryNoteDetail.InfoGoodsDeliveryNoteDetailActivity"
+            android:label="@string/info_goods_delivery_note_detail" />
+        <activity
+            android:name=".activity.goodsDeliveryNoteDetail.AddGoodsDeliveryNoteDetailActivity"
+            android:label="@string/create_goods_delivery_note_detail" />
         <activity
             android:name=".activity.supplier.SupplierActivity"
             android:label="@string/list_supplier"/>
@@ -19,7 +42,7 @@
             android:name=".activity.supplier.SupplierDetailActivity"
             android:label="@string/info_supplier"/>
         <activity
-            android:name=".activity.goodsDeliveryNote.GoodsDeliveryNoteDetailActivity"
+            android:name=".activity.goodsDeliveryNote.InfoGoodsDeliveryNoteActivity"
             android:label="@string/info_goods_delivery_note" />
         <activity
             android:name=".activity.goodsDeliveryNote.AddGoodsDeliveryNoteActivity"
