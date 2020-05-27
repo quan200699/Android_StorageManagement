@@ -85,7 +85,7 @@ public class EmployeeDao implements IEmployeeDao {
         res.moveToFirst();
         while (!res.isAfterLast()) {
             int id = res.getInt(res.getColumnIndex(ID));
-            String employeeId = res.getString(res.getColumnIndex(CUSTOMER_ID));
+            String employeeId = res.getString(res.getColumnIndex(EMPLOYEE_ID));
             String name = res.getString(res.getColumnIndex(NAME));
             String birthday = res.getString(res.getColumnIndex(BIRTHDAY));
             String sex = res.getString(res.getColumnIndex(SEX));
