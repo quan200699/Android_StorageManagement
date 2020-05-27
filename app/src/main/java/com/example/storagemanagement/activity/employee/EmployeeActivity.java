@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -18,6 +19,8 @@ import com.example.storagemanagement.dao.employee.IEmployeeDao;
 import com.example.storagemanagement.model.Employee;
 
 import java.util.List;
+
+import static com.example.storagemanagement.config.StaticVariable.*;
 
 public class EmployeeActivity extends AppCompatActivity {
     private ListView listViewEmployee;
@@ -38,6 +41,19 @@ public class EmployeeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(EmployeeActivity.this, AddEmployeeActivity.class);
+                startActivity(intent);
+            }
+        });
+        listViewEmployee.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(EmployeeActivity.this, EmployeeDetailActivity.class);
+                intent.putExtra(ID, employees.get(position).getId());
+                intent.putExtra(EMPLOYEE_ID, employees.get(position).getEmployeeId());
+                intent.putExtra(NAME, employees.get(position).getName());
+                intent.putExtra(BIRTHDAY, employees.get(position).getBirthday());
+                intent.putExtra(SEX, employees.get(position).getSex());
+                intent.putExtra(ADDRESS, employees.get(position).getAddress());
                 startActivity(intent);
             }
         });

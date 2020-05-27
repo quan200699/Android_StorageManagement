@@ -9,8 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.employee.AddEmployeeActivity"
-            android:label="@string/create_employee"/>
+        <activity android:name=".activity.employee.EmployeeDetailActivity"
+            android:label="@string/info_employee"/>
+        <activity
+            android:name=".activity.employee.AddEmployeeActivity"
+            android:label="@string/create_employee" />
         <activity
             android:name=".activity.employee.EmployeeActivity"
             android:label="@string/list_employee" />
