@@ -52,6 +52,8 @@ public class GoodsReceivedNoteActivity extends AppCompatActivity {
                 intent.putExtra(GOODS_RECEIVED_NOTE_ID, goodsReceivedNotes.get(position).getGoodsReceivedNoteId());
                 intent.putExtra(DATE, goodsReceivedNotes.get(position).getDate());
                 intent.putExtra(WAREHOUSE_ID, goodsReceivedNotes.get(position).getWarehouseId());
+                intent.putExtra(EMPLOYEE_ID, goodsReceivedNotes.get(position).getEmployeeId());
+                intent.putExtra(SUPPLIER_ID, goodsReceivedNotes.get(position).getSupplierId());
                 intent.putExtra(NOTICE, goodsReceivedNotes.get(position).getNotice());
                 startActivity(intent);
             }
