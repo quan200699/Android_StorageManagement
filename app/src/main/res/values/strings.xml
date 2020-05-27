@@ -51,4 +51,13 @@
     <string name="create_goods_received_note_detail">TẠO MỚI CHI TIẾT PHIẾU NHẬP</string>
     <string name="info_goods_received_note_detail">THÔNG TIN CHI TIẾT PHIẾU NHẬP</string>
     <string name="goods_received_note_detail">Chi tiết phiếu nhập</string>
+
+
+    <string name="list_employee">DANH SÁCH NHÂN VIÊN</string>
+    <string name="create_employee">TẠO MỚI NHÂN VIÊN</string>
+    <string name="info_employee">THÔNG TIN NHÂN VIÊN</string>
+    <string name="employee_id">Mã nhân viên</string>
+    <string name="employee_name">Tên nhân viên</string>
+    <string name="birthday">Sinh nhật</string>
+    <string name="sex">Giới tính</string>
 </resources>

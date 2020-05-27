@@ -9,8 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.goodsReceivedNoteDetail.InfoGoodsReceivedNoteDetailActivity"
-            android:label="@string/info_goods_received_note_detail"/>
+        <activity android:name=".activity.employee.EmployeeActivity"
+            android:label="@string/list_employee"/>
+        <activity
+            android:name=".activity.goodsReceivedNoteDetail.InfoGoodsReceivedNoteDetailActivity"
+            android:label="@string/info_goods_received_note_detail" />
         <activity
             android:name=".activity.goodsReceivedNoteDetail.AddGoodsReceivedNoteDetailActivity"
             android:label="@string/create_goods_received_note_detail" />
@@ -34,13 +37,13 @@
             android:label="@string/create_goods_delivery_note_detail" />
         <activity
             android:name=".activity.supplier.SupplierActivity"
-            android:label="@string/list_supplier"/>
+            android:label="@string/list_supplier" />
         <activity
             android:name=".activity.supplier.AddSupplierActivity"
-            android:label="@string/add_supplier"/>
+            android:label="@string/add_supplier" />
         <activity
             android:name=".activity.supplier.SupplierDetailActivity"
-            android:label="@string/info_supplier"/>
+            android:label="@string/info_supplier" />
         <activity
             android:name=".activity.goodsDeliveryNote.InfoGoodsDeliveryNoteActivity"
             android:label="@string/info_goods_delivery_note" />
