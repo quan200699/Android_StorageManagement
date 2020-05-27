@@ -66,9 +66,9 @@ public class EmployeeDao implements IEmployeeDao {
             String employeeId = cursor.getString(cursor.getColumnIndex(EMPLOYEE_ID));
             String name = cursor.getString(cursor.getColumnIndex(NAME));
             String birthday = cursor.getString(cursor.getColumnIndex(BIRTHDAY));
-            String customerAddress = cursor.getString(cursor.getColumnIndex(ADDRESS));
+            String address = cursor.getString(cursor.getColumnIndex(ADDRESS));
             String sex = cursor.getString(cursor.getColumnIndex(SEX));
-            employee = new Employee(employeeId, name, birthday, sex, customerAddress);
+            employee = new Employee(employeeId, name, birthday, sex, address);
             cursor.moveToNext();
         }
         cursor.close();

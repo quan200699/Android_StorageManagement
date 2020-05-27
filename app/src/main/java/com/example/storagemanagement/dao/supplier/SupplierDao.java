@@ -17,18 +17,20 @@ import static com.example.storagemanagement.config.StaticVariable.*;
 public class SupplierDao implements ISupplierDao {
     private DBHelper dbHelper;
 
-    public SupplierDao(Context context){this.dbHelper = new DBHelper(context);}
+    public SupplierDao(Context context) {
+        this.dbHelper = new DBHelper(context);
+    }
 
     @Override
     public Supplier insert(Supplier supplier) {
         SQLiteDatabase sqLiteDatabase = this.dbHelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(SUPPLIER_ID,supplier.getSupplierId());
-        contentValues.put(NAME,supplier.getName());
-        contentValues.put(ADDRESS,supplier.getAddress());
-        contentValues.put(EMAIL,supplier.getEmail());
-        long result =sqLiteDatabase.insert(TABLE_SUPPLIER,null,contentValues);
-        return result !=-1 ? supplier : null;
+        contentValues.put(SUPPLIER_ID, supplier.getSupplierId());
+        contentValues.put(NAME, supplier.getName());
+        contentValues.put(ADDRESS, supplier.getAddress());
+        contentValues.put(EMAIL, supplier.getEmail());
+        long result = sqLiteDatabase.insert(TABLE_SUPPLIER, null, contentValues);
+        return result != -1 ? supplier : null;
     }
 
     @Override
@@ -37,14 +39,14 @@ public class SupplierDao implements ISupplierDao {
         SQLiteDatabase sqLiteDatabase = this.dbHelper.getReadableDatabase();
         StringBuilder query = new StringBuilder(SELECT_ALL_ATTRIBUTE);
         query.append(TABLE_SUPPLIER).append(" ").append("WHERE").append(" ").append(ID).append("=").append(id);
-        Cursor cursor = sqLiteDatabase.rawQuery(query.toString(),null);
+        Cursor cursor = sqLiteDatabase.rawQuery(query.toString(), null);
         cursor.moveToFirst();
-        while (!cursor.isAfterLast()){
+        while (!cursor.isAfterLast()) {
             String SupplierId = cursor.getString(cursor.getColumnIndex(SUPPLIER_ID));
             String SupplierName = cursor.getString(cursor.getColumnIndex(NAME));
             String SupplierAddress = cursor.getString(cursor.getColumnIndex(ADDRESS));
             String SupplierEmail = cursor.getString(cursor.getColumnIndex(EMAIL));
-            sup = new Supplier(SupplierId,SupplierName,SupplierAddress,SupplierEmail);
+            sup = new Supplier(SupplierId, SupplierName, SupplierAddress, SupplierEmail);
             cursor.moveToNext();
         }
         cursor.close();
@@ -53,47 +55,67 @@ public class SupplierDao implements ISupplierDao {
 
     @Override
     public List<Supplier> findAll() {
-       List<Supplier> sup = new ArrayList<>();
-       SQLiteDatabase sqLiteDatabase = this.dbHelper.getReadableDatabase();
-       StringBuilder query = new StringBuilder(SELECT_ALL_ATTRIBUTE);
-       query.append(TABLE_SUPPLIER);
-       Cursor cursor = sqLiteDatabase.rawQuery(query.toString(),null);
-       cursor.moveToFirst();
-       while (!cursor.isAfterLast()){
-           int id = cursor.getInt(cursor.getColumnIndex(ID));
-           String SupplierId = cursor.getString(cursor.getColumnIndex(SUPPLIER_ID));
-           String SupplierName = cursor.getString(cursor.getColumnIndex(NAME));
-           String SupplierAddress = cursor.getString(cursor.getColumnIndex(ADDRESS));
-           String SupplierEmail = cursor.getString(cursor.getColumnIndex(EMAIL));
-           sup.add(new Supplier(id,SupplierId,SupplierName,SupplierAddress,SupplierEmail));
-           cursor.moveToNext();
-       }
-       cursor.close();
-       return sup;
+        List<Supplier> sup = new ArrayList<>();
+        SQLiteDatabase sqLiteDatabase = this.dbHelper.getReadableDatabase();
+        StringBuilder query = new StringBuilder(SELECT_ALL_ATTRIBUTE);
+        query.append(TABLE_SUPPLIER);
+        Cursor cursor = sqLiteDatabase.rawQuery(query.toString(), null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            int id = cursor.getInt(cursor.getColumnIndex(ID));
+            String SupplierId = cursor.getString(cursor.getColumnIndex(SUPPLIER_ID));
+            String SupplierName = cursor.getString(cursor.getColumnIndex(NAME));
+            String SupplierAddress = cursor.getString(cursor.getColumnIndex(ADDRESS));
+            String SupplierEmail = cursor.getString(cursor.getColumnIndex(EMAIL));
+            sup.add(new Supplier(id, SupplierId, SupplierName, SupplierAddress, SupplierEmail));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return sup;
     }
 
     @Override
     public boolean removeById(int id) {
         SQLiteDatabase sqLiteDatabase = this.dbHelper.getWritableDatabase();
-        String[] agruments = new String[]{id+""};
+        String[] agruments = new String[]{id + ""};
         StringBuilder WhereClause = new StringBuilder(ID);
         WhereClause.append("=").append("?");
-        int result = sqLiteDatabase.delete(TABLE_SUPPLIER,WhereClause.toString(),agruments);
-        return result !=0;
+        int result = sqLiteDatabase.delete(TABLE_SUPPLIER, WhereClause.toString(), agruments);
+        return result != 0;
     }
 
     @Override
     public boolean updateById(int id, Supplier supplier) {
         SQLiteDatabase sqLiteDatabase = this.dbHelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(SUPPLIER_ID,supplier.getSupplierId());
-        contentValues.put(NAME,supplier.getName());
-        contentValues.put(ADDRESS,supplier.getAddress());
-        contentValues.put(EMAIL,supplier.getEmail());
-        String [] arguments = new String[]{id+""};
-        StringBuilder WhereClause = new  StringBuilder(ID);
+        contentValues.put(SUPPLIER_ID, supplier.getSupplierId());
+        contentValues.put(NAME, supplier.getName());
+        contentValues.put(ADDRESS, supplier.getAddress());
+        contentValues.put(EMAIL, supplier.getEmail());
+        String[] arguments = new String[]{id + ""};
+        StringBuilder WhereClause = new StringBuilder(ID);
         WhereClause.append("=").append("?");
-        int result = sqLiteDatabase.update(TABLE_SUPPLIER,contentValues,WhereClause.toString(),arguments);
-        return result !=0;
+        int result = sqLiteDatabase.update(TABLE_SUPPLIER, contentValues, WhereClause.toString(), arguments);
+        return result != 0;
+    }
+
+    @Override
+    public Supplier findByName(String name) {
+        Supplier supplier = new Supplier();
+        SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
+        StringBuilder query = new StringBuilder(SELECT_ALL_ATTRIBUTE);
+        query.append(TABLE_SUPPLIER).append(" ").append(WHERE).append(" ").append(NAME).append("=").append("'").append(name).append("'");
+        Cursor cursor = sqLiteDatabase.rawQuery(String.valueOf(query), null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            int id = cursor.getInt(cursor.getColumnIndex(ID));
+            String supplierId = cursor.getString(cursor.getColumnIndex(SUPPLIER_ID));
+            String address = cursor.getString(cursor.getColumnIndex(ADDRESS));
+            String email = cursor.getString(cursor.getColumnIndex(EMAIL));
+            supplier = new Supplier(id, supplierId, name, address, email);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return supplier;
     }
 }
