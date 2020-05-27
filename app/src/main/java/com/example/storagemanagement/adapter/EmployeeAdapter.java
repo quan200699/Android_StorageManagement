@@ -48,10 +48,10 @@ public class EmployeeAdapter extends BaseAdapter {
             TextView textViewEmployeeName = convertView.findViewById(R.id.textViewEmployeeName);
             TextView textViewBirthday = convertView.findViewById(R.id.textViewBirthday);
             TextView textViewSex = convertView.findViewById(R.id.textViewSex);
-            TextView textViewAddress = convertView.findViewById(R.id.textViewSex);
+            TextView textViewAddress = convertView.findViewById(R.id.textViewAddress);
             textViewEmployeeId.setText(employee.getEmployeeId());
             textViewEmployeeName.setText(employee.getName());
-            textViewBirthday.setText(employee.getAddress());
+            textViewBirthday.setText(employee.getBirthday());
             textViewSex.setText(employee.getSex());
             textViewAddress.setText(employee.getAddress());
         }
