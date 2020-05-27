@@ -150,7 +150,7 @@ public class InfoGoodsReceivedNoteActivity extends AppCompatActivity {
             goodsReceivedNote.setSupplierId(supplier.getSupplierId());
         }
         Employee employee = employeeDao.findByName(employeeName);
-        if (warehouse != null) {
+        if (employee != null) {
             goodsReceivedNote.setEmployeeId(employee.getEmployeeId());
         }
         return goodsReceivedNote;

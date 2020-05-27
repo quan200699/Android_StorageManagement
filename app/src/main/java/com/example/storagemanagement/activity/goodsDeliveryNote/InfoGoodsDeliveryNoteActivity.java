@@ -19,11 +19,14 @@ import com.example.storagemanagement.R;
 import com.example.storagemanagement.activity.goodsDeliveryNoteDetail.GoodsDeliveryNoteDetailActivity;
 import com.example.storagemanagement.dao.customer.CustomerDao;
 import com.example.storagemanagement.dao.customer.ICustomerDao;
+import com.example.storagemanagement.dao.employee.EmployeeDao;
+import com.example.storagemanagement.dao.employee.IEmployeeDao;
 import com.example.storagemanagement.dao.goodsDeliveryNote.GoodsDeliveryNoteDao;
 import com.example.storagemanagement.dao.goodsDeliveryNote.IGoodsDeliveryNoteDao;
 import com.example.storagemanagement.dao.warehouse.IWarehouseDao;
 import com.example.storagemanagement.dao.warehouse.WarehouseDao;
 import com.example.storagemanagement.model.Customer;
+import com.example.storagemanagement.model.Employee;
 import com.example.storagemanagement.model.GoodsDeliveryNote;
 import com.example.storagemanagement.model.Warehouse;
 
@@ -45,8 +48,10 @@ public class InfoGoodsDeliveryNoteActivity extends AppCompatActivity {
     private IGoodsDeliveryNoteDao goodsDeliveryNoteDao;
     private ICustomerDao customerDao;
     private IWarehouseDao warehouseDao;
+    private IEmployeeDao employeeDao;
     private List<Customer> customers;
     private List<Warehouse> warehouses;
+    private List<Employee> employees;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,10 +64,14 @@ public class InfoGoodsDeliveryNoteActivity extends AppCompatActivity {
         List<String> customerNames = addCustomerNameToList(customers);
         warehouses = getAllWarehouse();
         List<String> warehouseNames = addWarehouseNameToList(warehouses);
+        employees = getAllEmployees();
+        List<String> employeeNames = addEmployeeNameToList(employees);
         ArrayAdapter<String> adapterCustomer = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, customerNames);
         ArrayAdapter<String> adapterWarehouse = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, warehouseNames);
+        ArrayAdapter<String> adapterEmployee = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, employeeNames);
         spinnerCustomer.setAdapter(adapterCustomer);
         spinnerWarehouse.setAdapter(adapterWarehouse);
+        spinnerEmployee.setAdapter(adapterEmployee);
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             final GoodsDeliveryNote goodsDeliveryNoteFromBundle = getGoodsDeliveryNoteFromBundle(bundle);
@@ -130,6 +139,7 @@ public class InfoGoodsDeliveryNoteActivity extends AppCompatActivity {
         String notice = editTextNotice.getText().toString();
         String customerName = spinnerCustomer.getSelectedItem().toString();
         String warehouseName = spinnerWarehouse.getSelectedItem().toString();
+        String employeeName = spinnerEmployee.getSelectedItem().toString();
         GoodsDeliveryNote goodsDeliveryNote = new GoodsDeliveryNote(goodsDeliveryNoteId, date, notice);
         Customer customer = customerDao.findByName(customerName);
         Warehouse warehouse = warehouseDao.findByName(warehouseName);
@@ -138,6 +148,10 @@ public class InfoGoodsDeliveryNoteActivity extends AppCompatActivity {
         }
         if (warehouse != null) {
             goodsDeliveryNote.setWareHouseId(warehouse.getWarehouseId());
+        }
+        Employee employee = employeeDao.findByName(employeeName);
+        if (employee != null) {
+            goodsDeliveryNote.setEmployeeId(employee.getEmployeeId());
         }
         return goodsDeliveryNote;
     }
@@ -148,6 +162,7 @@ public class InfoGoodsDeliveryNoteActivity extends AppCompatActivity {
         editTextNotice.setText(goodsDeliveryNoteFromBundle.getNotice());
         spinnerCustomer.setSelection(getDefaultCustomerSpinnerPosition(customers, goodsDeliveryNoteFromBundle.getCustomerId()));
         spinnerWarehouse.setSelection(getDefaultWarehouseSpinnerPosition(warehouses, goodsDeliveryNoteFromBundle.getWareHouseId()));
+        spinnerEmployee.setSelection(getDefaultEmployeeSpinnerPosition(employees, goodsDeliveryNoteFromBundle.getEmployeeId()));
     }
 
     private int getDefaultWarehouseSpinnerPosition(List<Warehouse> warehouses, String wareHouseId) {
@@ -176,14 +191,28 @@ public class InfoGoodsDeliveryNoteActivity extends AppCompatActivity {
         return position;
     }
 
+    private int getDefaultEmployeeSpinnerPosition(List<Employee> employees, String employeeId) {
+        int position = 0;
+        if (employeeId != null) {
+            for (int i = 0; i < employees.size(); i++) {
+                if (employeeId.equals(employees.get(i).getEmployeeId())) {
+                    position = i + 1;
+                    break;
+                }
+            }
+        }
+        return position;
+    }
+
     private GoodsDeliveryNote getGoodsDeliveryNoteFromBundle(Bundle bundle) {
         int id = bundle.getInt(ID);
         String goodsDeliveryNoteId = bundle.getString(GOODS_DELIVERY_NOTE_ID);
         String date = bundle.getString(DATE);
         String customerId = bundle.getString(CUSTOMER_ID);
         String warehouseId = bundle.getString(WAREHOUSE_ID);
+        String employeeId = bundle.getString(EMPLOYEE_ID);
         String notice = bundle.getString(NOTICE);
-        return new GoodsDeliveryNote(id, goodsDeliveryNoteId, date, customerId, warehouseId, notice);
+        return new GoodsDeliveryNote(id, goodsDeliveryNoteId, date, customerId, warehouseId, employeeId, notice);
     }
 
     private List<String> addWarehouseNameToList(List<Warehouse> warehouses) {
@@ -204,12 +233,25 @@ public class InfoGoodsDeliveryNoteActivity extends AppCompatActivity {
         return customerNames;
     }
 
+    private List<String> addEmployeeNameToList(List<Employee> employees) {
+        List<String> employeeNames = new ArrayList<>();
+        employeeNames.add("");
+        for (Employee employee : employees) {
+            employeeNames.add(employee.getName());
+        }
+        return employeeNames;
+    }
+
     private List<Warehouse> getAllWarehouse() {
         return warehouseDao.findAll();
     }
 
     private List<Customer> getAllCustomer() {
         return customerDao.findAll();
+    }
+
+    private List<Employee> getAllEmployees() {
+        return employeeDao.findAll();
     }
 
     private void init() {
@@ -225,6 +267,7 @@ public class InfoGoodsDeliveryNoteActivity extends AppCompatActivity {
         goodsDeliveryNoteDao = new GoodsDeliveryNoteDao(this);
         customerDao = new CustomerDao(this);
         warehouseDao = new WarehouseDao(this);
+        employeeDao = new EmployeeDao(this);
     }
 
     @Override
