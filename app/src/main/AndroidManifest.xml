@@ -42,6 +42,9 @@
             android:name=".activity.goodsDeliveryNoteDetail.AddGoodsDeliveryNoteDetailActivity"
             android:label="@string/create_goods_delivery_note_detail" />
         <activity
+            android:name=".activity.goodsDeliveryNoteDetail.GoodsDeliveryNoteDetailActivity"
+            android:label="@string/list_goods_delivery_note_detail" />
+        <activity
             android:name=".activity.supplier.SupplierActivity"
             android:label="@string/list_supplier" />
         <activity
