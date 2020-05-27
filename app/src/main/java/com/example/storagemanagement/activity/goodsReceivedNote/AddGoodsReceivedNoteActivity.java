@@ -83,6 +83,8 @@ public class AddGoodsReceivedNoteActivity extends AppCompatActivity {
         editTextDate.setText("");
         editTextNotice.setText("");
         spinnerWarehouse.setSelection(0);
+        spinnerEmployee.setSelection(0);
+        spinnerSupplier.setSelection(0);
     }
 
     private void showMessage(GoodsReceivedNote goodsReceivedNote) {
@@ -98,10 +100,20 @@ public class AddGoodsReceivedNoteActivity extends AppCompatActivity {
         String date = editTextDate.getText().toString();
         String notice = editTextNotice.getText().toString();
         String warehouseName = spinnerWarehouse.getSelectedItem().toString();
+        String supplierName = spinnerSupplier.getSelectedItem().toString();
+        String employeeName = spinnerEmployee.getSelectedItem().toString();
         GoodsReceivedNote goodsReceivedNote = new GoodsReceivedNote(goodsReceivedNoteId, date, notice);
         Warehouse warehouse = warehouseDao.findByName(warehouseName);
         if (warehouse != null) {
             goodsReceivedNote.setWarehouseId(warehouse.getWarehouseId());
+        }
+        Supplier supplier = supplierDao.findByName(supplierName);
+        if (supplier != null) {
+            goodsReceivedNote.setSupplierId(supplier.getSupplierId());
+        }
+        Employee employee = employeeDao.findByName(employeeName);
+        if (warehouse != null) {
+            goodsReceivedNote.setEmployeeId(employee.getEmployeeId());
         }
         return goodsReceivedNoteDao.insert(goodsReceivedNote);
     }
