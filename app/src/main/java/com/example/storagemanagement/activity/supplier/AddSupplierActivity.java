@@ -80,7 +80,7 @@ public class AddSupplierActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case android.R.id.home:
-                Intent intent = new Intent(AddSupplierActivity.this, MainActivity.class);
+                Intent intent = new Intent(AddSupplierActivity.this, SupplierActivity.class);
                 startActivity(intent);
                 finish();
                 return true;
