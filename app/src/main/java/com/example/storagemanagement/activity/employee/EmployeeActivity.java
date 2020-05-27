@@ -31,8 +31,8 @@ public class EmployeeActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         init();
-        final List<Employee> customers = employeeDao.findAll();
-        EmployeeAdapter customerAdapter = new EmployeeAdapter(EmployeeActivity.this, customers);
+        final List<Employee> employees = employeeDao.findAll();
+        EmployeeAdapter customerAdapter = new EmployeeAdapter(EmployeeActivity.this, employees);
         listViewEmployee.setAdapter(customerAdapter);
         buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override

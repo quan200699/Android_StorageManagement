@@ -80,7 +80,7 @@ public class EmployeeDao implements IEmployeeDao {
         List<Employee> employees = new ArrayList<>();
         SQLiteDatabase sqLiteDatabase = this.dbHelper.getReadableDatabase();
         StringBuilder query = new StringBuilder(SELECT_ALL_ATTRIBUTE);
-        query.append(TABLE_CUSTOMER);
+        query.append(TABLE_EMPLOYEE);
         Cursor res = sqLiteDatabase.rawQuery(query.toString(), null);
         res.moveToFirst();
         while (!res.isAfterLast()) {
